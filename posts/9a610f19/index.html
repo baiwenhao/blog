@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                referer | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">referer</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/02/17</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h3 id="referer-表示来源网页的url"><a href="#referer-表示来源网页的url" class="headerlink" title="referer 表示来源网页的url"></a>referer 表示来源网页的url</h3><p>通过检查请求头referer来判断来源网页的域名<br>用浏览器直接访问图片是没有referer的<br><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.36" target="_blank" rel="noopener">http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.36</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> log = <span class="function"><span class="params">str</span> =&gt;</span> <span class="built_in">console</span>.log(str)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> serveStatic = <span class="built_in">require</span>(<span class="string">'serve-static'</span>)</span><br><span class="line"><span class="keyword">const</span> parseUrl = <span class="built_in">require</span>(<span class="string">'url'</span>).parse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stripHostPort</span>(<span class="params">host</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (host) host = host.split(<span class="string">':'</span>)[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">return</span> host</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getHostName</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> stripHostPort(parseUrl(url).host)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkReferer</span>(<span class="params">whiteList</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> referer = req.headers.referer || req.headers.referrer</span><br><span class="line">      <span class="comment">// 如果没有referer,则直接跳过</span></span><br><span class="line">    <span class="keyword">if</span> (!referer) <span class="keyword">return</span> next()</span><br><span class="line">    <span class="keyword">const</span> refererHost = getHostName(referer)</span><br><span class="line">      <span class="comment">// 如果与当前域名相同则跳过</span></span><br><span class="line">    <span class="keyword">if</span> (refererHost === stripHostPort(req.headers.host)) <span class="keyword">return</span> next()</span><br><span class="line">      <span class="comment">// 如果存在于白名单则跳过</span></span><br><span class="line">    log(refererHost)</span><br><span class="line">    <span class="keyword">if</span> (whiteList.indexOf(refererHost) !== <span class="number">-1</span>) <span class="keyword">return</span> next()</span><br><span class="line">      <span class="comment">// host不同,返回错误信息</span></span><br><span class="line">    res.sendFile(path.resolve(__dirname, <span class="string">'public/2.png'</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line">app.set(<span class="string">'view engine'</span>, <span class="string">'ejs'</span>)</span><br><span class="line">app.set(<span class="string">'views'</span>, __dirname + <span class="string">'/public'</span>)</span><br><span class="line">app.use(<span class="string">'/img'</span>, checkReferer([<span class="string">'localhost'</span>])) <span class="comment">// 允许访问图片的域名</span></span><br><span class="line">app.use(<span class="string">'/img'</span>, serveStatic(__dirname + <span class="string">'/public'</span>))</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.render(<span class="string">'img'</span>, &#123;</span><br><span class="line">    username: <span class="string">'图片防盗链'</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3001</span>)</span><br></pre></td></tr></table></figure>
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/6313db75/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">koa</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/849a3ae4/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">vscode</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

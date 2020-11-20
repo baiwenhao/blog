@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                mysql | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">mysql</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/06/12</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>今天准备用node链接mysql，查询公司项目的详细信息，第一步把项目列表展示出来即可！<br>于是简单学下mysql，分享给大家！</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>MySQL是由瑞典的MySQL AB公司开发，后来被甲骨文公司收购。和Oracle一样，MySQL是一个典型的关系型数据库<br>MySQL作为数据库主要是因为它体积小，速度快，安装完才几百兆，而且核心程序采用多线程编程，线程也是轻量级的进程，不会占用太多的系统资源，因此一般的中小型网站都选择MySQL数据库。<br>但是也正是由于它的轻量级，因此它也“砍掉”了一些功能，比如存储过程等</p>
+<h2 id="关系型数据库和非关系型数据库"><a href="#关系型数据库和非关系型数据库" class="headerlink" title="关系型数据库和非关系型数据库"></a>关系型数据库和非关系型数据库</h2><p>说到关系型数据库，大家肯定就会想到另一个词与之对应，非关系型数据库，那么这两者有什么样的区别呢？<br>关系型数据库是指采用了关系模型（指的是二维表格模型）来组织数据的数据库，有稳定的表结构；<br>而非关系型数据库中的数据没有关系模型，以对象的形式存放到数据库中，对象之间的关系是通过每个对象的属性来决定的，有点类似于一长串json对象。<br>典型的非关系型数据库有MongoDB和Redis</p>
+<h2 id="链接-mysql"><a href="#链接-mysql" class="headerlink" title="链接 mysql"></a>链接 mysql</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"><span class="comment">// 连接数据库的配置</span></span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;</span><br><span class="line">  <span class="comment">// 主机名称，一般是本机</span></span><br><span class="line">  host: <span class="string">'localhost'</span>,</span><br><span class="line">  <span class="comment">// 数据库的端口号，如果不设置，默认是3306</span></span><br><span class="line">  port: <span class="number">3306</span></span><br><span class="line">  <span class="comment">// 创建数据库时设置用户名</span></span><br><span class="line">  user: <span class="string">'xyf'</span>,</span><br><span class="line">  <span class="comment">// 创建数据库时设置的密码</span></span><br><span class="line">  password: <span class="string">'xyf'</span>,</span><br><span class="line">  <span class="comment">// 创建的数据库</span></span><br><span class="line">  database: <span class="string">'xyf_db'</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 与数据库建立连接</span></span><br><span class="line">connection.connect();</span><br><span class="line"><span class="comment">// 查询数据库</span></span><br><span class="line">connection.query(<span class="string">'SELECT 1 + 1 AS solution'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, rows, fields</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'The solution is: '</span>, rows[<span class="number">0</span>].solution);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 关闭连接</span></span><br><span class="line">connection.end();</span><br></pre></td></tr></table></figure>
+<p>显示The solution is: 2 说明链接成功，如果不成功，请根据错误提示排错<br>在查询完数据库后，通过end()函数将连接关闭。<br>如果连接一直打开，首先会浪费不必要的系统资源<br>其次，数据库的连接数量有限制，如果达到上限时，会出现后续连接不上报错的情况</p>
+<p>官方文档还给出了另外两种建立连接的方式（隐式链接）<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>)</span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(...)</span><br><span class="line">connection.query(<span class="string">'SELECT 1 + 1 AS solution'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, rows, fields</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'The solution is: '</span>, rows[<span class="number">0</span>].solution)</span><br><span class="line">&#125;)</span><br><span class="line">connection.end()</span><br></pre></td></tr></table></figure></p>
+<p>注意这里没有用connect()函数建立连接，而是直接查询，这时建立连接将会被隐式地调用</p>
+<h2 id="连接失败处理"><a href="#连接失败处理" class="headerlink" title="连接失败处理"></a>连接失败处理</h2><p>一旦连接出现错误将带来连锁的多米诺骨牌效应，查询也将会失败，整个程序也会崩溃，为了避免出现这样的情况，我们将查询和关闭连接放到回调函数中。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>)</span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(...)</span><br><span class="line">connection.connect(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(err)&#123;</span><br><span class="line">    <span class="comment">// 连接失败时的错误处理</span></span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  connection.query(<span class="string">'SELECT 1 + 1 AS solution'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, rows, fields</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">      <span class="comment">// 查询失败时的错误处理</span></span><br><span class="line">      <span class="built_in">console</span>.log(err)</span><br><span class="line">      <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'The solution is: '</span>, rows[<span class="number">0</span>].solution)</span><br><span class="line">  &#125;)</span><br><span class="line">  connection.end()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="关闭连接"><a href="#关闭连接" class="headerlink" title="关闭连接"></a>关闭连接</h2><p>打开了数据库的连接我们也需要关闭连接，有两种关闭连接的方式，一种就是我们上面用的end()方法来关闭连接，它可以接收一个回调函数<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">connection.end(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 这时连接已经被关闭了</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>destroy()函数确保了没有更多的时间和回调会触发连接。同时destroy()函数也没有回调函数<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">connection.destroy()</span><br></pre></td></tr></table></figure></p>
+<h2 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h2><p>数据库连接池负责分配、管理和释放数据库连接，它允许应用程序重复使用一个现有的数据库连接，而不是再重新建立一个。<br>这项技术能明显提高对数据库操作的性能。<br>用一个很生动的例子来形容数据库连接池的工作：以前我们存取钱都需要去银行的柜台交易，银行的柜台数量是有限的，人多的时候还需要排队；<br>现在我们把钱都存在了支付宝上，每次需要用钱的时候都直接跟支付宝“要”，不需要再跑到银行去了，所有和银行“打交道”的业务都交给了支付宝帮我们来管理</p>
+<p><img src="/posts/9520183a/01.jpg" alt="logo"><br>数据库连接池在初始化的时候将一定数量（数量受最小连接数制约）的数据库连接存放到数据库连接池中，<br>不管这些数据库连接是否被使用，连接池一直要存放这么多的连接数量。<br>连接池的最大数据库连接数量限制了连接池最多能同时拥有的连接数，如果超过最大连接数时，请求将会被添加到等待队列中去</p>
+<h2 id="创建数据库连接池"><a href="#创建数据库连接池" class="headerlink" title="创建数据库连接池"></a>创建数据库连接池</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>)</span><br><span class="line"><span class="keyword">var</span> pool=mysql.createPool(&#123;</span><br><span class="line">  host: <span class="string">'localhost'</span>,</span><br><span class="line">  user: <span class="string">'xyf'</span>,</span><br><span class="line">  password: <span class="string">'xyf'</span>,</span><br><span class="line">  port: <span class="string">'3306'</span>,</span><br><span class="line">  database: <span class="string">'xyf_db'</span>,</span><br><span class="line">  <span class="comment">// 最大连接数，默认为10</span></span><br><span class="line">  connectionLimit: <span class="number">10</span></span><br><span class="line">&#125;)</span><br><span class="line">pool.getConnection(<span class="function"><span class="keyword">function</span>(<span class="params">err,connection</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(err)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  connection.query(<span class="string">'SELECT 1 + 1 AS solution'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,result</span>)</span>&#123;</span><br><span class="line">    connection.release()</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(err)</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'The solution is: '</span>, result[<span class="number">0</span>].solution)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>首先我们通过createPool()方法创建了一个数据库连接池，它的配置参数和上面的配置基本差不多，只是多了一个最大连接数。<br>每次我们需要和数据库建立连接的时候不再是直接建立连接，而是去连接池中通过pool.getConnection()方法“捞取”已有的连接。<br>这个方法有一个回调，数据库连接作为回调参数返回给我们使用。<br>每次查询完数据库是都要使用release()方法释放数据库连接，这样数据库连接又回到了连接池中。<br>释放后如果再使用connection将会报错</p>
+<h2 id="关闭连接池"><a href="#关闭连接池" class="headerlink" title="关闭连接池"></a>关闭连接池</h2><p>一般数据库连接池不需要关闭，但是如果使用完连接池需要将所有的连接关闭，我们可以使用pool.end()方法将其关闭<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">pool.end(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 所有连接池中的数据库连接将会被关闭</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>end()方法提供一个回调方法，以便在所有连接关闭时进行一些操作。<br>关闭连接池前所有队列中的查询任然会执行完成，所以每次关闭的时间都不一样。<br>一旦end()方法被调用了，getConnection和其他一些获取连接池中连接的方法不会再被执行</p>
+<h2 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h2><p>SELECT * FROM iw_static_project WHERE name LIKE “%app%”</p>
+<h2 id="获取时间加日期"><a href="#获取时间加日期" class="headerlink" title="获取时间加日期"></a>获取时间加日期</h2><p>select now()<br>select current_timestamp()<br>select localtime()<br>select localtimestamp()</p>
+<p>// now() 在执行开始时值就得到了， sysdate() 在函数执行时动态得到值<br>select sysdate()</p>
+<p>// 获取日期<br>select curdate()</p>
+<p>// 获得当前时间<br>select curtime()</p>
+<p>// 因为我国位于东八时区，所以本地时间 = UTC 时间 + 8 小时。UTC 时间在业务涉及多个国家和地区的时候，非常有用。<br>utc_date(), utc_time(), utc_timestamp()</p>
+<p>// 时间戳 Timestamp 函数<br>current_timestamp, current_timestamp()</p>
+<p>// Unix 转换函数<br>unix_timestamp() // 将具体时间来转换成timestamp<br>unix_timestamp(1218290027)<br>from_unixtime(‘2008-08-08 12:30:00’) // 将timestamp来转换成具体时间<br>from_unixtime(1218169800, ‘%Y %D %M %h:%i:%s %x’)</p>
+<p>// 时间戳（timestamp）转换、增、减函数<br>timestamp(date)                                     – date to timestamp<br>timestamp(dt,time)                                  – dt + time<br>timestampadd(unit,interval,datetime_expr)           –<br>timestampdiff(unit,datetime_expr1,datetime_expr2)   –<br>请看示例部分：<br>select timestamp(‘2008-08-08’);                         – 2008-08-08 00:00:00<br>select timestamp(‘2008-08-08 08:00:00’, ‘01:01:01’);    – 2008-08-08 09:01:01<br>select timestamp(‘2008-08-08 08:00:00’, ‘10 01:01:01’); – 2008-08-18 09:01:01<br>select timestampadd(day, 1, ‘2008-08-08 08:00:00’);     – 2008-08-09 08:00:00<br>select date_add(‘2008-08-08 08:00:00’, interval 1 day); – 2008-08-09 08:00:00<br>MySQL timestampadd() 函数类似于 date_add()。<br>select timestampdiff(year,’2002-05-01’,’2001-01-01’);                    – -1<br>select timestampdiff(day ,’2002-05-01’,’2001-01-01’);                    – -485<br>select timestampdiff(hour,’2008-08-08 12:00:00’,’2008-08-08 00:00:00’); – -12<br>select datediff(‘2008-08-08 12:00:00’, ‘2008-08-01 00:00:00’);           – 7<br>MySQL timestampdiff() 函数就比 datediff() 功能强多了，datediff() 只能计算两个日期（date）之间相差的天数。</p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/fc854d4d/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">性能优化</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/19656fd5/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">react</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

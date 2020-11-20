@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                fe-interview | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">fe-interview</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/02/16</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="字符转换"><a href="#字符转换" class="headerlink" title="字符转换"></a>字符转换</h2><blockquote>
+<p>16进制与10进制相互转换<br>var sHex=(255).toString(16);//ff<br>var iNum=parseInt(“ff”,16);//255</p>
+<p>JavaScript字符与ASCII码间的转换<br>console.log(“\n”.charCodeAt(0));//10<br>console.log(String.fromCharCode(65));//A</p>
+</blockquote>
+<h2 id="克隆对象"><a href="#克隆对象" class="headerlink" title="克隆对象"></a>克隆对象</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Handle the 3 simple types, and null or undefined</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">null</span> == obj || <span class="string">"object"</span> != <span class="keyword">typeof</span> obj) <span class="keyword">return</span> obj</span><br><span class="line">  <span class="comment">// Handle Date</span></span><br><span class="line">  <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="built_in">Date</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> copy = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    copy.setTime(obj.getTime());</span><br><span class="line">    <span class="keyword">return</span> copy;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Handle Array</span></span><br><span class="line">  <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> copy = []</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, <span class="keyword">var</span> len = obj.length; i &lt; len; ++i) &#123;</span><br><span class="line">        copy[i] = clone(obj[i])</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> copy</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Handle Object</span></span><br><span class="line">  <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="built_in">Object</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> copy = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      <span class="keyword">if</span> (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> copy</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Unable to copy obj! Its type isn't supported."</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="server状态码"><a href="#server状态码" class="headerlink" title="server状态码"></a>server状态码</h2><blockquote>
+<p>301永久重定向<br>302临时重定向<br>304未修改，从本地度缓存<br>404未找到<br>500服务器<br>favicon.ico 默认请求ico<br>response.setHeader(‘Cache-Control’, ‘public, max-age=3600’); //缓存一小时</p>
+</blockquote>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h6 id="闭包域内声明的方法外部无法直接访问，但它可以访问外部的变量或方法，每声明一个函数-就产生一个域-函数栈-，每个域内部有个function-scope内默认有个Global全局引用"><a href="#闭包域内声明的方法外部无法直接访问，但它可以访问外部的变量或方法，每声明一个函数-就产生一个域-函数栈-，每个域内部有个function-scope内默认有个Global全局引用" class="headerlink" title="闭包域内声明的方法外部无法直接访问，但它可以访问外部的变量或方法，每声明一个函数,就产生一个域(函数栈)，每个域内部有个function scope内默认有个Global全局引用"></a>闭包域内声明的方法外部无法直接访问，但它可以访问外部的变量或方法，每声明一个函数,就产生一个域(函数栈)，每个域内部有个function scope内默认有个Global全局引用</h6><h6 id="当一个函数包含另一个函数，子函数生命周期依附于父函数，子函数的function-scope会产生一个closure对象属性，它包含子域对父域的所有引用，只要子函数存活其父函数就依旧存活，如果父函数存活期间对私有变量做了改变，那引用的子函数function-scope的closure对象属性的内容也会发生变化-因为他们只是引用关系"><a href="#当一个函数包含另一个函数，子函数生命周期依附于父函数，子函数的function-scope会产生一个closure对象属性，它包含子域对父域的所有引用，只要子函数存活其父函数就依旧存活，如果父函数存活期间对私有变量做了改变，那引用的子函数function-scope的closure对象属性的内容也会发生变化-因为他们只是引用关系" class="headerlink" title="当一个函数包含另一个函数，子函数生命周期依附于父函数，子函数的function scope会产生一个closure对象属性，它包含子域对父域的所有引用，只要子函数存活其父函数就依旧存活，如果父函数存活期间对私有变量做了改变，那引用的子函数function scope的closure对象属性的内容也会发生变化,因为他们只是引用关系"></a>当一个函数包含另一个函数，子函数生命周期依附于父函数，子函数的function scope会产生一个closure对象属性，它包含子域对父域的所有引用，只要子函数存活其父函数就依旧存活，如果父函数存活期间对私有变量做了改变，那引用的子函数function scope的closure对象属性的内容也会发生变化,因为他们只是引用关系</h6><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span> (<span class="params">arg</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// onclick函数实例的 function scope 的 closure 对象属性有一个引用 arg</span></span><br><span class="line">    arr[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 只要 外部空间的 arg 不变,这里的引用值当然不会改变</span></span><br><span class="line">      alert(arg)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)(i) <span class="comment">// 立刻执行该匿名函数,传递下标 i(实参)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">  arr[i].i = i</span><br><span class="line">  arr[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;arr.length;i++) &#123;</span><br><span class="line">  arr[i].onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">arg</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      alert(arg)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;arr.length;i++) &#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = i</span><br><span class="line">    arr[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      alert(temp)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">  arr[i].onclick = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = i</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      alert(temp)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">  (arr[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="built_in">arguments</span>.callee.i) <span class="comment">// arguments 参数对象  arguments.callee 参数对象所属函数</span></span><br><span class="line">  &#125;).i = i</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">  arr[i].onclick = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"alert("</span>+i+<span class="string">");"</span>)</span><br><span class="line">  <span class="comment">// 每 new 一个 Function 得到一个 Function 对象(一个函数),有自己的闭包域</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">    arr[i].onclick = <span class="built_in">Function</span>(<span class="string">"alert("</span>+i+<span class="string">");"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">  <span class="keyword">let</span> j = i; <span class="comment">// 创建一个块级变量</span></span><br><span class="line">  arr[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      alert(j)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自执行的匿名函数</span></span><br><span class="line">+<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;()</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;())</span><br></pre></td></tr></table></figure>
+<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p>通常同来检测一个对象是否已经定义或者是否已经赋值<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Value               Class      Type</span><br><span class="line">-------------------------------------</span><br><span class="line"><span class="string">"foo"</span>               <span class="built_in">String</span>     string</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"foo"</span>)   <span class="built_in">String</span>     object</span><br><span class="line"><span class="number">1.2</span>                 <span class="built_in">Number</span>     number</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1.2</span>)     <span class="built_in">Number</span>     object</span><br><span class="line"><span class="literal">true</span>                <span class="built_in">Boolean</span>    boolean</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>)   <span class="built_in">Boolean</span>    object</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>()          <span class="built_in">Date</span>       object</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Error</span>()         <span class="built_in">Error</span>      object</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]             <span class="built_in">Array</span>      object</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)  <span class="built_in">Array</span>      object</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">""</span>)    <span class="built_in">Function</span>   <span class="function"><span class="keyword">function</span></span></span><br><span class="line"><span class="function">/<span class="title">abc</span>/<span class="title">g</span>              <span class="title">RegExp</span>     <span class="title">object</span> (<span class="params">function in Nitro<span class="regexp">/V8)</span></span></span></span><br><span class="line"><span class="function"><span class="params"><span class="regexp">new RegExp("meow")  RegExp     object (function in Nitro/</span>V8</span>)</span></span><br><span class="line"><span class="function"></span>&#123;&#125;                  <span class="built_in">Object</span>     object</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Object</span>()        <span class="built_in">Object</span>     object</span><br></pre></td></tr></table></figure></p>
+<p>Class 一列表示对象的内部属性 [[Class]] 的值,只可能是下面字符串中的一个<br>Arguments, Array, Boolean, Date, Error, Function, JSON, Math, Number, Object, RegExp, String.</p>
+<p>强烈推荐使用 Object.prototype.toString<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">is</span>(<span class="params">type, obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> clas = <span class="built_in">Object</span>.prototype.toString.call(obj).slice(<span class="number">8</span>, <span class="number">-1</span>)</span><br><span class="line">  <span class="keyword">return</span> obj !== <span class="literal">undefined</span> &amp;&amp; obj !== <span class="literal">null</span> &amp;&amp; clas === type</span><br><span class="line">&#125;</span><br><span class="line">is(<span class="string">'String'</span>, <span class="string">'test'</span>) <span class="comment">// true</span></span><br><span class="line">is(<span class="string">'String'</span>, <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'test'</span>)) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call([])    <span class="comment">// "[object Array]"</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(&#123;&#125;)    <span class="comment">// "[object Object]"</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="number">2</span>)    <span class="comment">// "[object Number]"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><h5 id="比较自定义的对象时才有意义，如果用来比较内置类型，将会和-typeof-操作符-一样用处不大。"><a href="#比较自定义的对象时才有意义，如果用来比较内置类型，将会和-typeof-操作符-一样用处不大。" class="headerlink" title="比较自定义的对象时才有意义，如果用来比较内置类型，将会和 typeof 操作符 一样用处不大。"></a>比较自定义的对象时才有意义，如果用来比较内置类型，将会和 typeof 操作符 一样用处不大。</h5><p>比较自定义对象<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Bar</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">Bar.prototype = <span class="keyword">new</span> Foo();</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Bar() <span class="keyword">instanceof</span> Bar; <span class="comment">// true</span></span><br><span class="line"><span class="keyword">new</span> Bar() <span class="keyword">instanceof</span> Foo; <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果仅仅设置 Bar.prototype 为函数 Foo 本身，而不是 Foo 构造函数的一个实例</span></span><br><span class="line">Bar.prototype = Foo;</span><br><span class="line"><span class="keyword">new</span> Bar() <span class="keyword">instanceof</span> Foo; <span class="comment">// false</span></span><br></pre></td></tr></table></figure></p>
+<p>比较内置对象<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'foo'</span>) <span class="keyword">instanceof</span> <span class="built_in">String</span>; <span class="comment">// true</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'foo'</span>) <span class="keyword">instanceof</span> <span class="built_in">Object</span>; <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="string">'foo'</span> <span class="keyword">instanceof</span> <span class="built_in">String</span>; <span class="comment">// false</span></span><br><span class="line"><span class="string">'foo'</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span>; <span class="comment">// false</span></span><br></pre></td></tr></table></figure></p>
+<p>instanceof 操作符应该仅仅用来比较来自同一个 JavaScript 上下文的自定义对象</p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>javascript是弱类型语言，所以会在可能的情况下应用强制类型转换<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 下面的比较结果是：true</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">10</span>) == <span class="number">10</span>; <span class="comment">// Number.toString() 返回的字符串被再次转换为数字</span></span><br><span class="line"></span><br><span class="line"><span class="number">10</span> == <span class="string">'10'</span>;           <span class="comment">// 字符串被转换为数字</span></span><br><span class="line"><span class="number">10</span> == <span class="string">'+10 '</span>;         <span class="comment">// 同上</span></span><br><span class="line"><span class="number">10</span> == <span class="string">'010'</span>;          <span class="comment">// 同上</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="literal">null</span>) == <span class="literal">false</span>; <span class="comment">// null 被转换为数字 0</span></span><br><span class="line">                      <span class="comment">// 0 当然不是一个 NaN（译者注：否定之否定）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面的比较结果是：false</span></span><br><span class="line"><span class="number">10</span> == <span class="number">010</span>;</span><br><span class="line"><span class="number">10</span> == <span class="string">'-10'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>内部类型的构造函数<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">10</span>) === <span class="number">10</span>;     <span class="comment">// False, 对象与数字的比较</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="number">10</span>) === <span class="number">10</span>;         <span class="comment">// True, 数字与数字的比较</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">10</span>) + <span class="number">0</span> === <span class="number">10</span>; <span class="comment">// True, 由于隐式的类型转换</span></span><br></pre></td></tr></table></figure></p>
+<p>最好把选择比较的值显示的转换为三中可能的类型之一<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">''</span> + <span class="number">10</span> === <span class="string">'10'</span></span><br><span class="line">+ <span class="string">'10'</span> === <span class="number">10</span></span><br><span class="line"><span class="string">'+010'</span> === <span class="number">10</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">'010'</span>) === <span class="number">10</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'010'</span>, <span class="number">10</span>) === <span class="number">10</span></span><br></pre></td></tr></table></figure></p>
+<p>转换布尔型<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">!!<span class="string">'foo'</span>   <span class="comment">// true</span></span><br><span class="line">!!<span class="string">''</span>      <span class="comment">// false</span></span><br><span class="line">!!<span class="string">'0'</span>     <span class="comment">// true</span></span><br><span class="line">!!<span class="string">'1'</span>     <span class="comment">// true</span></span><br><span class="line">!!<span class="string">'-1'</span>    <span class="comment">// true</span></span><br><span class="line">!!&#123;&#125;      <span class="comment">// true</span></span><br><span class="line">!!<span class="literal">true</span>    <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h2><h5 id="为什么不要使用eval"><a href="#为什么不要使用eval" class="headerlink" title="为什么不要使用eval"></a>为什么不要使用eval</h5><p>eval 函数会在当前作用域中执行一段 JavaScript 代码字符串<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">2</span></span><br><span class="line">    <span class="built_in">eval</span>(<span class="string">'foo = 3'</span>)</span><br><span class="line">    <span class="keyword">return</span> foo</span><br><span class="line">&#125;</span><br><span class="line">test() <span class="comment">// 3</span></span><br><span class="line">foo <span class="comment">// 1</span></span><br></pre></td></tr></table></figure></p>
+<p>但是 eval 只在被直接调用并且调用函数就是 eval 本身时，才在当前作用域中执行<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">2</span></span><br><span class="line">    <span class="keyword">var</span> bar = <span class="built_in">eval</span></span><br><span class="line">    bar(<span class="string">'foo = 3'</span>)</span><br><span class="line">    <span class="keyword">return</span> foo;</span><br><span class="line">&#125;</span><br><span class="line">test() <span class="comment">// 2</span></span><br><span class="line">foo <span class="comment">// 3</span></span><br></pre></td></tr></table></figure></p>
+<p>上面的代码等价于在全局作用域中调用 eval，和下面两种写法效果一样：<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 写法一：直接调用全局作用域下的 foo 变量</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">window</span>.foo = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">return</span> foo;</span><br><span class="line">&#125;</span><br><span class="line">test(); <span class="comment">// 2</span></span><br><span class="line">foo; <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 写法二：使用 call 函数修改 eval 执行的上下文为全局作用域</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> foo = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">eval</span>.call(<span class="built_in">window</span>, <span class="string">'foo = 3'</span>);</span><br><span class="line">    <span class="keyword">return</span> foo;</span><br><span class="line">&#125;</span><br><span class="line">test(); <span class="comment">// 2</span></span><br><span class="line">foo; <span class="comment">// 3</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="伪装的eval"><a href="#伪装的eval" class="headerlink" title="伪装的eval"></a>伪装的eval</h5><p>定时函数 setTimeout 和 setInterval 都可以接受字符串作为它们的第一个参数。<br>这个字符串总是在全局作用域中执行，因此 eval 在这种情况下没有被直接调用<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 将会被调用</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 不会被调用</span></span><br><span class="line">  &#125;</span><br><span class="line">  setTimeout(<span class="string">'foo()'</span>, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line">bar()</span><br></pre></td></tr></table></figure></p>
+<p>不要在调用定时器函数时，为了向回调函数传递参数而使用字符串的形式<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a, b, c</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不要这样做</span></span><br><span class="line">setTimeout(<span class="string">'foo(1,2, 3)'</span>, <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以使用匿名函数完成相同功能</span></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    foo(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br></pre></td></tr></table></figure></p>
+<p>应该避免使用 setInterval，因为它的定时执行不会被 JavaScript 阻塞<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 阻塞执行 1 秒</span></span><br><span class="line">  setTimeout(foo, <span class="number">100</span>)</span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br></pre></td></tr></table></figure></p>
+<h2 id="locaion"><a href="#locaion" class="headerlink" title="locaion"></a>locaion</h2><h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 输出星期几？</span></span><br><span class="line"><span class="keyword">var</span> key = [<span class="string">'日'</span>, <span class="string">'一'</span>, <span class="string">'二'</span>, <span class="string">'三'</span>, <span class="string">'四'</span>, <span class="string">'五'</span>, <span class="string">'六'</span>]</span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'今天是星期'</span> + key[date.getDay()])</span><br></pre></td></tr></table></figure>
+<h2 id="fastClick"><a href="#fastClick" class="headerlink" title="fastClick"></a>fastClick</h2><p><a href="http://www.cnblogs.com/vajoy/p/5522114.html" target="_blank" rel="noopener">http://www.cnblogs.com/vajoy/p/5522114.html</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow</a><br><a href="https://gist.github.com/allenm/5e22379cb8055f4402bcd417f682ae8f" target="_blank" rel="noopener">https://gist.github.com/allenm/5e22379cb8055f4402bcd417f682ae8f</a> //dingding</p>
+<h2 id="xss-攻击"><a href="#xss-攻击" class="headerlink" title="xss 攻击"></a>xss 攻击</h2><p>面试题</p>
+<h5 id="http-javascript-puzzlers-herokuapp-com"><a href="#http-javascript-puzzlers-herokuapp-com" class="headerlink" title="http://javascript-puzzlers.herokuapp.com/"></a><a href="http://javascript-puzzlers.herokuapp.com/" target="_blank" rel="noopener">http://javascript-puzzlers.herokuapp.com/</a></h5><h5 id="https-github-com-qiu-deqing-FE-interview-E7-BC-96-E5-86-99javascript-E6-B7-B1-E5-BA-A6-E5-85-8B-E9-9A-86-E5-87-BD-E6-95-B0deepclone"><a href="#https-github-com-qiu-deqing-FE-interview-E7-BC-96-E5-86-99javascript-E6-B7-B1-E5-BA-A6-E5-85-8B-E9-9A-86-E5-87-BD-E6-95-B0deepclone" class="headerlink" title="https://github.com/qiu-deqing/FE-interview#%E7%BC%96%E5%86%99javascript%E6%B7%B1%E5%BA%A6%E5%85%8B%E9%9A%86%E5%87%BD%E6%95%B0deepclone"></a><a href="https://github.com/qiu-deqing/FE-interview#%E7%BC%96%E5%86%99javascript%E6%B7%B1%E5%BA%A6%E5%85%8B%E9%9A%86%E5%87%BD%E6%95%B0deepclone" target="_blank" rel="noopener">https://github.com/qiu-deqing/FE-interview#%E7%BC%96%E5%86%99javascript%E6%B7%B1%E5%BA%A6%E5%85%8B%E9%9A%86%E5%87%BD%E6%95%B0deepclone</a></h5>
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/77c0bb0b/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">meta</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/32978573/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">css</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+    <aside>
+        <div id="toc">
+        </div>
+    </aside>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

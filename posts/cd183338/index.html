@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                centos | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">centos</h1>
+
+          <section class="post-info">
+            <span class="post-date">2020/03/29</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="start"><a href="#start" class="headerlink" title="start"></a>start</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">yum -y install wget <span class="comment">// 纯粹的命令行工具</span></span><br><span class="line">yum install -y zip unzip <span class="comment">// centos 不支持 apt-get</span></span><br></pre></td></tr></table></figure>
+<h2 id="install-V2ray"><a href="#install-V2ray" class="headerlink" title="install V2ray"></a>install V2ray</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https://install.direct/go.sh // 下载脚本</span><br><span class="line">bash go.sh // 执行</span><br><span class="line">systemctl status v2ray</span><br><span class="line">systemctl start v2ray</span><br><span class="line">systemctl stop v2ray</span><br><span class="line">systemctl restart v2ray</span><br><span class="line">systemctl enable v2ray</span><br><span class="line"></span><br><span class="line">cat /etc/v2ray/config.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;inbounds&quot;: [&#123;</span><br><span class="line">    &quot;port&quot;: 36710, // 自定义端口号</span><br><span class="line">    &quot;protocol&quot;: &quot;vmess&quot;,</span><br><span class="line">    &quot;settings&quot;: &#123;</span><br><span class="line">      &quot;clients&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;id&quot;: &quot;472b34f4-e918-4e1c-9caf-842c50a6dfef&quot;,</span><br><span class="line">          &quot;level&quot;: 1,</span><br><span class="line">          &quot;alterId&quot;: 2</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;],</span><br><span class="line">  &quot;outbounds&quot;: [&#123;</span><br><span class="line">    &quot;protocol&quot;: &quot;freedom&quot;,</span><br><span class="line">    &quot;settings&quot;: &#123;&#125;</span><br><span class="line">  &#125;,&#123;</span><br><span class="line">    &quot;protocol&quot;: &quot;blackhole&quot;,</span><br><span class="line">    &quot;settings&quot;: &#123;&#125;,</span><br><span class="line">    &quot;tag&quot;: &quot;blocked&quot;</span><br><span class="line">  &#125;],</span><br><span class="line">  &quot;routing&quot;: &#123;</span><br><span class="line">    &quot;rules&quot;: [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;type&quot;: &quot;field&quot;,</span><br><span class="line">        &quot;ip&quot;: [&quot;geoip:private&quot;],</span><br><span class="line">        &quot;outboundTag&quot;: &quot;blocked&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>更新 V2Ray 的方法是再次执行安装脚本</p>
+<h2 id="install-shadowsockes"><a href="#install-shadowsockes" class="headerlink" title="install shadowsockes"></a>install shadowsockes</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py // 安装 pip 管理工具</span><br><span class="line">python get-pip.py</span><br><span class="line">pip install shadowsocks // 安装 shadowsocks</span><br><span class="line"></span><br><span class="line">vi /etc/shadowsocks.json // 配置文件</span><br><span class="line">&#123;</span><br><span class="line">  &quot;server&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">  &quot;server_port&quot;: 36800,</span><br><span class="line">  &quot;local_port&quot;: 1080,</span><br><span class="line">  &quot;password&quot;: &quot;wenhao.works&quot;,</span><br><span class="line">  &quot;timeout&quot;: 300,</span><br><span class="line">  &quot;method&quot;: &quot;aes-256-cfb&quot;</span><br><span class="line">&#125;</span><br><span class="line">systemctl enable shadowsocks // 开机自启命令</span><br><span class="line">systemctl start shadowsocks // 启动命令</span><br><span class="line">systemctl status shadowsocks // 查看状态命令</span><br><span class="line">systemctl stop shadowsocks // 关闭服务</span><br><span class="line">pip uninstall shadowsocks // 卸载</span><br></pre></td></tr></table></figure>
+<h2 id="install-git"><a href="#install-git" class="headerlink" title="install git"></a>install git</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">yum install git</span><br></pre></td></tr></table></figure>
+<h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><figure class="highlight"><table><tr><td class="code"><pre><span class="line">nginx status</span><br><span class="line">nginx -t           #测试配置文件</span><br><span class="line">nginx -s stop      #强制停止Nginx服务</span><br><span class="line">nginx -s quit      #处理完请求后再停止服务</span><br><span class="line">nginx -s reload    #重启命令</span><br><span class="line">ps -ef |grep nginx #查看进程命令</span><br><span class="line">nginx -v           #查看Nginx的版本号</span><br></pre></td></tr></table></figure>
+<h2 id="查看开放的端口"><a href="#查看开放的端口" class="headerlink" title="查看开放的端口"></a>查看开放的端口</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --list-ports</span><br></pre></td></tr></table></figure>
+<h2 id="添加开放的端口"><a href="#添加开放的端口" class="headerlink" title="添加开放的端口"></a>添加开放的端口</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br></pre></td></tr></table></figure>
+<p>switchyOmega</p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+          
+            <a class="post-next pager-item" href="/posts/f9d684ec/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">chrome</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

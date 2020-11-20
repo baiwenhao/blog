@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                git | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">git</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/02/07</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="秘钥"><a href="#秘钥" class="headerlink" title="秘钥"></a>秘钥</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls ~/.ssh  两个文件id_rsa和id_rsa.pub</span><br><span class="line">cat ~/.ssh/id_rea.pub 查看秘钥</span><br><span class="line">ssh-keygen 生成秘钥</span><br></pre></td></tr></table></figure>
+<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git --version</span><br><span class="line">git config --list显示当前配置信息</span><br><span class="line">git config --global user.name bwh 增加 修改</span><br><span class="line">git config --global user.email wehhao.bai@autonavi.com</span><br><span class="line">git config --get user.name || git config user.name  查询</span><br><span class="line">git config --list --global 列出所有的name</span><br><span class="line">git config --list --global --unset user.name 删除</span><br><span class="line">git config --global alias.st status 设置快捷键st</span><br></pre></td></tr></table></figure>
+<h2 id="暂存区"><a href="#暂存区" class="headerlink" title="暂存区"></a>暂存区</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init 初始化一个目录</span><br><span class="line">git add a 添加到暂存区</span><br><span class="line">git reset HEAD a 历史记录里面已经没有a了</span><br><span class="line">git checkout a 还原一个文件</span><br><span class="line">git checkout . 删除未提交的文件</span><br><span class="line">git checkout -- fliename 恢复删除的文件</span><br><span class="line">git rm --cached a 删除暂存区里的a</span><br><span class="line">git commit -m &quot;Initial commit&quot; 暂存区的文件提交到历史记录</span><br><span class="line">git commit -m &quot;modify a&quot; 把修改的a提交到历史记录</span><br><span class="line">git rm a 同时删除暂存区和历史记录的a</span><br><span class="line">git rm img -r -f 删除img文件夹及文件</span><br><span class="line">git rm img -f 删除一个文件</span><br><span class="line">git mv a c 把a重名名为c</span><br><span class="line">创建.gitignore文件</span><br><span class="line">*.[oa] .o或者.a结尾的文件不会给监控</span><br><span class="line">**/res 所有目录下面的res都匹配到</span><br></pre></td></tr></table></figure>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch test 创建一个分支</span><br><span class="line">git branch -a 查看远程分支</span><br><span class="line">git checkout -b test_merge 创建并切换到分支</span><br><span class="line">git checkout dev 切换分支</span><br><span class="line">git merge test 合并分支</span><br><span class="line">git merge --abort 放弃合并</span><br><span class="line">git branch -d name 删除本地分支</span><br></pre></td></tr></table></figure>
+<h2 id="查看对比历史记录"><a href="#查看对比历史记录" class="headerlink" title="查看对比历史记录"></a>查看对比历史记录</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git show HEAD 查看</span><br><span class="line">git show master^2</span><br><span class="line">git show --stat master^2</span><br><span class="line">git show --oneline madter^2 </span><br><span class="line">git show --oneline --stat master^2</span><br><span class="line">git log --oneline --decorte --graph --all 查看历史示意图</span><br><span class="line">git config --global alias.lol &quot;log --oneline --decorate --graph --graph --all&quot; 快捷键设置 lol</span><br><span class="line">git diff  工作区和暂存区的区别</span><br><span class="line">git diff --cached 暂存区和历史记录的区别</span><br><span class="line">git diff HEAD HEAD~2 --master.txt 差异比较</span><br><span class="line">git diff --color-words 差异的单词</span><br><span class="line">git diff --word-diff</span><br></pre></td></tr></table></figure>
+<h2 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --hard HEAD 撤销全部</span><br><span class="line">git checkout -- .a.txt 撤销上一步工作区修改</span><br><span class="line">git checkout HEAD -- a.txt 还原工作区和暂存区</span><br><span class="line">git reset a.txt 撤销暂存区修改</span><br><span class="line">git clean -n 将要移除的文件</span><br><span class="line">git clean -f 移除</span><br><span class="line">git clean -n -X 将要移除的.gitignore里的文件</span><br><span class="line">git clean -n -f 移除</span><br><span class="line">git revert HEAD撤销最近一次提交</span><br><span class="line">git revert HEAD^撤销上上次提交</span><br></pre></td></tr></table></figure>
+<h2 id="重写历史记录"><a href="#重写历史记录" class="headerlink" title="重写历史记录"></a>重写历史记录</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit --amend</span><br><span class="line">git rebase </span><br><span class="line">git reset</span><br><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<h2 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone  复制</span><br><span class="line">git fetch origin master 获取到本地</span><br><span class="line">git fetch 获取远程分支到本地</span><br><span class="line">git push 上传历史记录</span><br><span class="line">git push origin dev</span><br><span class="line">git pull origin dev</span><br></pre></td></tr></table></figure>
+<p>项目名变更了<br>git remote rm origin<br>git remote add origin</p>
+<h2 id="钥匙"><a href="#钥匙" class="headerlink" title="钥匙"></a>钥匙</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls ~/.ssh 查看秘钥 id_rsa id_rsa.put</span><br><span class="line">ssh-keygen 生成秘钥</span><br><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<h2 id="拉取子模块一直要输入密码"><a href="#拉取子模块一直要输入密码" class="headerlink" title="拉取子模块一直要输入密码"></a>拉取子模块一直要输入密码</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">进入工程里git submodule init 查看子模块，进SourceTree右键点击子模块，</span><br><span class="line">更改源URL,加上自己的用户名 baiwnehao.sh@，然后 键入git submodule update</span><br><span class="line">.gitmodules不要提交就可以</span><br></pre></td></tr></table></figure>
+<h2 id="恢复备份数据"><a href="#恢复备份数据" class="headerlink" title="恢复备份数据"></a>恢复备份数据</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash 备份当前工作区内容,从最近一次提交中读取内容,让工作区保证和上次提交内容一致</span><br><span class="line">git stash list 显示git栈内所有备份</span><br><span class="line">git stash pop 读取最近保存的内容</span><br><span class="line">git stash clear 清空git栈</span><br></pre></td></tr></table></figure>
+<h2 id="本地仓库关联远程仓库"><a href="#本地仓库关联远程仓库" class="headerlink" title="本地仓库关联远程仓库"></a>本地仓库关联远程仓库</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">git remote add origin git@github.com:baiwenhao/baiwenhao.github.com.git</span><br><span class="line">git remote set-url origin git@github.com:ppreyer/first_app.git</span><br></pre></td></tr></table></figure>
+<h2 id="这是全局忽略设置"><a href="#这是全局忽略设置" class="headerlink" title="这是全局忽略设置"></a>这是全局忽略设置</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git check-ignore -v index.html</span><br><span class="line">/Users/baiwenhao/.gitignore_global:11:index.html  index.html</span><br></pre></td></tr></table></figure>
+<h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">error: The requested URL returned error: 403 Forbidden while accessing</span><br><span class="line">nano .git/comfig  #然后添加url前面添加账户名称</span><br><span class="line">url = https://baiwenhao@github.com/baiwenhao/vue_note.git</span><br></pre></td></tr></table></figure>
+<h2 id="del-commit"><a href="#del-commit" class="headerlink" title="del commit"></a>del commit</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// Checkout</span><br><span class="line">git checkout --orphan latest_branch</span><br><span class="line"></span><br><span class="line">// Add all the files</span><br><span class="line">git add -A</span><br><span class="line"></span><br><span class="line">// Commit the changes</span><br><span class="line">git commit -am &quot;commit message&quot;</span><br><span class="line"></span><br><span class="line">// Delete the branch</span><br><span class="line">git branch -D master</span><br><span class="line"></span><br><span class="line">// Rename the current branch to master</span><br><span class="line">git branch -m master</span><br><span class="line"></span><br><span class="line">// Finally, force update your repository</span><br><span class="line">git push -f origin master</span><br></pre></td></tr></table></figure>
+<h2 id="统计代码量"><a href="#统计代码量" class="headerlink" title="统计代码量"></a>统计代码量</h2><p><a href="https://blog.csdn.net/c_zhangsir/article/details/102861983" target="_blank" rel="noopener">https://blog.csdn.net/c_zhangsir/article/details/102861983</a></p>
+<h2 id="覆盖-master-分支"><a href="#覆盖-master-分支" class="headerlink" title="覆盖 master 分支"></a>覆盖 master 分支</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">git push origin develop:master -f <span class="comment">// 强制推送,但是本地 master 还是旧的</span></span><br><span class="line"></span><br><span class="line">git checkout master <span class="comment">// 切换到旧的分支</span></span><br><span class="line">git reset --hard develop <span class="comment">// 将本地的旧分支 master 重置成 develop</span></span><br><span class="line">git push origin master --force <span class="comment">// 再推送到远程仓库</span></span><br></pre></td></tr></table></figure>
+<h2 id="view-origin-branch"><a href="#view-origin-branch" class="headerlink" title="view origin branch"></a>view origin branch</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+<h2 id="delete-origin-branch"><a href="#delete-origin-branch" class="headerlink" title="delete origin branch"></a>delete origin branch</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">git push origin --<span class="keyword">delete</span> [branch_name]</span><br></pre></td></tr></table></figure>
+<h2 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">git fetch --all <span class="comment">// 拉去所有分支</span></span><br></pre></td></tr></table></figure>
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/99791dcb/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">npm and yarn</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/3c50d03d/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">markdown</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+    <aside>
+        <div id="toc">
+        </div>
+    </aside>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

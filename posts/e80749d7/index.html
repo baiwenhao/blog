@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                history | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">history</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/02/17</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="popstate"><a href="#popstate" class="headerlink" title="popstate"></a>popstate</h2><p>需要注意调用history.pushState 或 history.replaceState 不会触发 popstate 事件<br>只有在做出浏览器动作时，才会触发该事件，如用户点击浏览器的回退按钮<br>或在 Javascript 代码中调用 back, go, forward 事件<br>不同的浏览器在加载页面时处理 popstate 事件的形式存在差异<br>页面加载时 Chrome 和 Safari 通常会触发(emit) popstate事件，但Firefox则不会</p>
+<h2 id="replaceState"><a href="#replaceState" class="headerlink" title="replaceState"></a>replaceState</h2><p>和参数 popstate 操作一致，区别是它修改浏览历史中当前纪录</p>
+<h2 id="state"><a href="#state" class="headerlink" title="state"></a>state</h2><p>history.state 属性返回当前页面的 state 对象</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  state与网址相关的状态对象&#123;name: 'list'&#125;, 会被传入到 popstate 事件的回调函数，也可填null</span></span><br><span class="line"><span class="comment">  title 页面标题</span></span><br><span class="line"><span class="comment">  新的url，即使设置锚点也不会触发hashchange，不允许设置跨域url</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="built_in">window</span>.history.pushState(<span class="string">'state'</span>, <span class="string">'title'</span>, <span class="string">'?state=name'</span>)</span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'popstate'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// e.state</span></span><br><span class="line">  <span class="keyword">if</span> (history.state &amp;&amp; history.state.name == <span class="string">'xieyi'</span>) &#123;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="URLSearchParams-API"><a href="#URLSearchParams-API" class="headerlink" title="URLSearchParams API"></a>URLSearchParams API</h2><p>URLSearchParams API用于处理URL之中的查询字符串，即问号之后的部分</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// has() 返回一个布尔值，表示是否具有某个参数</span></span><br><span class="line"><span class="comment">// get() 返回指定参数的第一个值</span></span><br><span class="line"><span class="comment">// getAll() 返回一个数组，成员是指定参数的所有值</span></span><br><span class="line"><span class="comment">// set() 设置指定参数</span></span><br><span class="line"><span class="comment">// delete() 删除指定参数</span></span><br><span class="line"><span class="comment">// append() 在查询字符串之中，追加一个键值对</span></span><br><span class="line"><span class="comment">// toString() 返回整个查询字符串</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> paramsString = <span class="string">'q=URLUtils.searchParams&amp;topic=api'</span>;</span><br><span class="line"><span class="keyword">var</span> searchParams = <span class="keyword">new</span> URLSearchParams(paramsString);</span><br><span class="line"></span><br><span class="line">searchParams.has(<span class="string">'topic'</span>) <span class="comment">// true</span></span><br><span class="line">searchParams.get(<span class="string">'topic'</span>) <span class="comment">// "api"</span></span><br><span class="line">searchParams.getAll(<span class="string">'topic'</span>) <span class="comment">// ["api"]</span></span><br><span class="line"></span><br><span class="line">searchParams.get(<span class="string">'foo'</span>) <span class="comment">// null，注意Firefox返回空字符串</span></span><br><span class="line">searchParams.set(<span class="string">'foo'</span>, <span class="number">2</span>);</span><br><span class="line">searchParams.get(<span class="string">'foo'</span>) <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">searchParams.append(<span class="string">'topic'</span>, <span class="string">'webdev'</span>);</span><br><span class="line">searchParams.toString() <span class="comment">// "q=URLUtils.searchParams&amp;topic=api&amp;foo=2&amp;topic=webdev"</span></span><br><span class="line"></span><br><span class="line">searchParams.append(<span class="string">'foo'</span>, <span class="number">3</span>);</span><br><span class="line">searchParams.getAll(<span class="string">'foo'</span>) <span class="comment">// [2, 3]</span></span><br><span class="line"></span><br><span class="line">searchParams.delete(<span class="string">'topic'</span>);</span><br><span class="line">searchParams.toString() <span class="comment">// "q=URLUtils.searchParams&amp;foo=2&amp;foo=3"</span></span><br></pre></td></tr></table></figure>
+<p>keys() // 遍历参数名<br>values() // 遍历参数值<br>entries() // 遍历所有参数键值对<br>都返回 Iterator 对象</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> searchParams = <span class="keyword">new</span> URLSearchParams(<span class="string">'key1=value1&amp;key2=value2'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">of</span> searchParams.keys()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// key1</span></span><br><span class="line"><span class="comment">// key2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> value <span class="keyword">of</span> searchParams.values()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// value1</span></span><br><span class="line"><span class="comment">// value2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> pair <span class="keyword">of</span> searchParams.entries()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(pair[<span class="number">0</span>]+ <span class="string">', '</span>+ pair[<span class="number">1</span>])</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// key1, value1</span></span><br><span class="line"><span class="comment">// key2, value2</span></span><br></pre></td></tr></table></figure>
+<p>在Chrome浏览器之中，URLSearchParams实例本身就是Iterator对象，与entries方法返回值相同。所以，可以写成下面的样子<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> p <span class="keyword">of</span> searchParams) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(p)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// URL: https://example.com?version=1.0</span></span><br><span class="line"><span class="keyword">var</span> params = <span class="keyword">new</span> URLSearchParams(location.search.slice(<span class="number">1</span>));</span><br><span class="line">params.set(<span class="string">'version'</span>, <span class="number">2.0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.history.replaceState(&#123;&#125;, <span class="string">''</span>, <span class="string">`<span class="subst">$&#123;location.pathname&#125;</span>?<span class="subst">$&#123;params&#125;</span>`</span>);</span><br><span class="line"><span class="comment">// URL: https://example.com?version=2.0</span></span><br></pre></td></tr></table></figure></p>
+<p>URLSearchParams实例可以当作POST数据发送，所有数据都会URL编码<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> params = <span class="keyword">new</span> URLSearchParams()</span><br><span class="line">params.append(<span class="string">'api_key'</span>, <span class="string">'1234567890'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 替换url的例子</span></span><br><span class="line">fetch(<span class="string">'https://example.com/api'</span>, &#123;</span><br><span class="line">  method: <span class="string">'POST'</span>,</span><br><span class="line">  body: params</span><br><span class="line">&#125;).then(...)</span><br></pre></td></tr></table></figure></p>
+<p>DOM的a元素节点的searchParams属性，就是一个URLSearchParams实例<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>)</span><br><span class="line">a.href = <span class="string">'https://example.com?filter=api'</span></span><br><span class="line">a.searchParams.get(<span class="string">'filter'</span>) <span class="comment">// "api"</span></span><br></pre></td></tr></table></figure></p>
+<p>URLSearchParams还可以与URL接口结合使用<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="keyword">new</span> URL(location)</span><br><span class="line"><span class="keyword">var</span> foo = url.searchParams.get(<span class="string">'foo'</span>) || <span class="string">'somedefault'</span></span><br></pre></td></tr></table></figure></p>
+<p>今天正好碰到这个老生常谈的问题，希望用户离开页面之前，能展现一个提示告诉用户你有未保存的数据没有提交，是否需要保存后离开，</p>
+<p>我们知道，onbeforeunload 和 onunload 事件是在浏览器即将请求下一个页面的时候触发，还可以阻止 onunload 触发，而 onunload 事件则是浏览器已经将下一个页面请求回来，</p>
+<p>页面即将跳转的时候触发，该事件无法中断。那么 onbeforeunload 能满足需要吗，答案是不能，</p>
+<p>onbeforeunload 事件虽然能阻止onunload事件的触发，但是由于它是浏览器内置的事件，其出现的交互方式和UI界面，并不是我想要的样式<br>所以，想要通过onbeforeunload事件提供的浮层实现收集用户离开的原因或让用户给应用打分的功能并不现实。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> pop = <span class="built_in">document</span>.getElementById(<span class="string">'J_PageWrap'</span>)</span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'load'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> tit = <span class="built_in">document</span>.title,</span><br><span class="line">        path = location.href.replace(<span class="regexp">/#.*$/</span>, <span class="string">''</span>) + <span class="string">'#!hash'</span></span><br><span class="line">    history.pushState(&#123;<span class="attr">title</span>: tit, <span class="attr">path</span>: path&#125;, tit, path)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'hashchange'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> oAddr = ev.oldURL.replace(<span class="regexp">/^.+(?=\/\/)/</span>, <span class="string">''</span>), <span class="comment">// 为避免http(s)的影响，去除协议进行判断</span></span><br><span class="line">    nAddr = ev.newURL.replace(<span class="regexp">/^.+(?=\/\/)/</span>, <span class="string">''</span>)</span><br><span class="line">  <span class="keyword">if</span> (oAddr === <span class="string">'//10.14.132.43:808/tests/hash/index.html#!hash'</span></span><br><span class="line">    &amp;&amp; nAddr === <span class="string">'//10.14.132.43:808/tests/hash/index.html'</span>) &#123;</span><br><span class="line">      pop.className += <span class="string">' show'</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    pop.className = <span class="string">'page-wrap'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>参考：<br><a href="http://www.jianshu.com/p/9ced734f75e8" target="_blank" rel="noopener">http://www.jianshu.com/p/9ced734f75e8</a></p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/238c95be/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">sublime</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/f3627c01/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">QuickApp</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

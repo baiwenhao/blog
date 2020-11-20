@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                markdown | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">markdown</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/02/07</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <p>参考地址 <a href="https://wizardforcel.gitbooks.io/markdown-simple-world/content/2.html" target="_blank" rel="noopener">https://wizardforcel.gitbooks.io/markdown-simple-world/content/2.html</a></p>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><pre>
+#字号 (#~######)
+*这是斜体*
+_这也是斜体_
+**这是粗体**
+***这是粗体+斜体***
+
+<!-- 注释 -->
+hexo server
+hexo deploy
+hexo new page "about"
+
+> 类似
+> ## This is an H2 in a blockquote
+</pre>
+
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><pre>
+* * *
+***
+*****
+- - -
+---------------------------------------
+</pre>
+
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><pre>
+| 项目        | 价格      |  数量    |
+| --------   | -----     | ----    |
+| 计算机      | $1600     |   5     |
+| 手机        |   $12     |   12    |
+| 管线        |    $1     |  234    |
+</pre>
+
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><pre>
+- 嵌套列表
+
+* Candy.
+* Gum.
+* Booze.
+
++ Candy.
++ Gum.
++ Booze.
+
+- 外层列表项目
+ + 内层列表项目
+ + 内层无序列表项目
+ + 内层列表项目
+- 外层列表项目
+</pre>
+
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 方法一</span><br><span class="line">![GitHub Mark](图片地址 &quot;GitHub Mark&quot;) // 文字超链接</span><br><span class="line">这是一个[链接](http://baiwenhao.github.io, &apos;我是链接&apos;) // 图片超链接</span><br><span class="line"></span><br><span class="line">// 方法二</span><br><span class="line">[wenhao][1]</span><br><span class="line">![GitHub Octocat][2]</span><br><span class="line">[1]:http://baiwenhao.github.io</span><br><span class="line">[2]:http://github.global.ssl.fastly.net/images/modules/logos_page/Octocat.png</span><br><span class="line"></span><br><span class="line">也可以这样</span><br><span class="line">![alt text][id]</span><br><span class="line">[id]: /path/to/img.jpg &quot;Title&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Mark" title="GitHub Mark"></p>
+<p><a href="http://bruce-sha.github.io" target="_blank" rel="noopener">wenhao</a><br><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/Octocat.png" alt="GitHub Octocat"></p>
+<blockquote><br>For example.<br>asdasdasd<br></blockquote>
+
+<h2 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Markdown中的转义字符为\，转义的有：</span><br><span class="line">\\ 反斜杠</span><br><span class="line">\` 反引号</span><br><span class="line">\* 星号</span><br><span class="line">\_ 下划线</span><br><span class="line">\&#123;\&#125; 大括号</span><br><span class="line">\[\] 中括号</span><br><span class="line">\(\) 小括号</span><br><span class="line">\# 井号</span><br><span class="line">\+ 加号</span><br><span class="line">\- 减号</span><br><span class="line">\. 英文句号</span><br><span class="line">\! 感叹号</span><br></pre></td></tr></table></figure>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/69c3279c/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">git</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/fa6f25a3/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">event</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+    <aside>
+        <div id="toc">
+        </div>
+    </aside>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

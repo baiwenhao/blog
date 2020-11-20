@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                QuickApp | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">QuickApp</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/02/17</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h3 id="用户调整字体大小页面布局出错-怎么阻止用户调整"><a href="#用户调整字体大小页面布局出错-怎么阻止用户调整" class="headerlink" title="用户调整字体大小页面布局出错,怎么阻止用户调整"></a>用户调整字体大小页面布局出错,怎么阻止用户调整</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//以下代码可使Android机页面不再受用户字体缩放强制改变大小，但是会有1S左右延时，期间可以考虑loading来处理</span><br><span class="line">if (typeof(WeixinJSBridge) == &quot;undefined&quot;) &#123;</span><br><span class="line">  document.addEventListener(&quot;WeixinJSBridgeReady&quot;, function (e) &#123;</span><br><span class="line">    setTimeout(function()&#123;</span><br><span class="line">      WeixinJSBridge.invoke(&apos;setFontSizeCallback&apos;, &#123; &apos;fontSize&apos;:0&#125;, function(res)&#123;</span><br><span class="line">        alert(JSON.stringify(res));</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;, 0)</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">  setTimeout(function()&#123;</span><br><span class="line">    WeixinJSBridge.invoke(&apos;setFontSizeCallback&apos;, &#123; &apos;fontSize&apos;:0&#125;, function(res)&#123;</span><br><span class="line">      alert(JSON.stringify(res));</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;, 0)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//IOS下可使用 -webkit-text-size-adjust禁止用户调整字体大小</span><br><span class="line">body &#123; -webkit-text-size-adjust:100%!important; &#125;</span><br><span class="line"></span><br><span class="line">//最好的解决方案：最好使用rem或百分比布局</span><br></pre></td></tr></table></figure>
+<p>WeixinJSBridge.call(‘closeWindow’) // 关闭窗口</p>
+<h2 id="小程序"><a href="#小程序" class="headerlink" title="小程序"></a>小程序</h2><h3 id="本地存储"><a href="#本地存储" class="headerlink" title="本地存储"></a>本地存储</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> logs = wx.getStorageSync(<span class="string">'logs'</span>) || []</span><br><span class="line">logs.unshift(<span class="built_in">Date</span>.now())</span><br><span class="line">wx.setStorageSync(<span class="string">'logs'</span>, logs)</span><br></pre></td></tr></table></figure>
+<p>获取地理位置<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">wx.getLocation(&#123;</span><br><span class="line">  type: <span class="string">'wgs84'</span>,</span><br><span class="line">  success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> latitude = res.latitude <span class="comment">// 经度</span></span><br><span class="line">    <span class="keyword">var</span> longitude = res.longitude <span class="comment">// 纬度</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>扫一扫<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">wx.scanCode(&#123;</span><br><span class="line">  success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>跳转页面<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">wx.navigateTo(&#123;</span><br><span class="line">  url: <span class="string">'../logs/logs'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>转发配置<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">onShareAppMessage: <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    title: <span class="string">'51表情制作器'</span>,</span><br><span class="line">    path: <span class="string">'pages/index/index'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>获取基础库版本号<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">wx.getSystemInfo(&#123; <span class="attr">success</span>: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;&#125; &#125;)</span><br><span class="line">wx.getSystemInfoSync()</span><br></pre></td></tr></table></figure></p>
+<p>开启蓝牙适配器<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">wx.openBluetoothAdapter()</span><br></pre></td></tr></table></figure></p>
+<p>弹框提示<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">wx.showModal(&#123;</span><br><span class="line">  title: <span class="string">'提示'</span>,</span><br><span class="line">  content: <span class="string">'当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>提示组件<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showLoading</span>(<span class="params">message</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (wx.showLoading) &#123;</span><br><span class="line">    <span class="comment">// 基础库 1.1.0 微信6.5.6版本开始支持，低版本需做兼容处理</span></span><br><span class="line">    wx.showLoading(&#123;</span><br><span class="line">      title: message,</span><br><span class="line">      mask: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 低版本采用Toast兼容处理并将时间设为20秒以免自动消失</span></span><br><span class="line">    wx.showToast(&#123;</span><br><span class="line">      title: message,</span><br><span class="line">      icon: <span class="string">'loading'</span>,</span><br><span class="line">      mask: <span class="literal">true</span>,</span><br><span class="line">      duration: <span class="number">20000</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hideLoading</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (wx.hideLoading) &#123;</span><br><span class="line">    <span class="comment">// 基础库 1.1.0 微信6.5.6版本开始支持，低版本需做兼容处理</span></span><br><span class="line">    wx.hideLoading();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    wx.hideToast();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="lightApp"><a href="#lightApp" class="headerlink" title="lightApp"></a>lightApp</h1><p>## </p>
+<h2 id="class"><a href="#class" class="headerlink" title="class"></a>class</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 样式切换</span></span><br><span class="line"><span class="class"><span class="keyword">class</span></span>=<span class="string">"normal-text &#123;&#123;className&#125;&#125;"</span></span><br><span class="line">style=<span class="string">"color:&#123;&#123;textColor&#125;&#125;"</span></span><br></pre></td></tr></table></figure>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p>onCreate<br>onInit 类似 created<br>onReady 类似 mounted</p>
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html</a><br><a href="https://www.jianshu.com/p/0d97e4118353" target="_blank" rel="noopener">https://www.jianshu.com/p/0d97e4118353</a></p>
+<h2 id="audio"><a href="#audio" class="headerlink" title="audio"></a>audio</h2><p><a href="https://www.w3cschool.cn/quickapp/quickapp-yo7u2s12.html" target="_blank" rel="noopener">https://www.w3cschool.cn/quickapp/quickapp-yo7u2s12.html</a></p>
+<h2 id="page-params"><a href="#page-params" class="headerlink" title="page params"></a>page params</h2><p><a href="https://www.jianshu.com/p/ccdcf77a81a5" target="_blank" rel="noopener">https://www.jianshu.com/p/ccdcf77a81a5</a></p>
+<h2 id="private"><a href="#private" class="headerlink" title="private"></a>private</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>=<span class="string">"&#123;&#123;!playState&#125;&#125;"</span></span><br><span class="line">elif</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">  play: <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">this</span>.play = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h2 id="自定义组件"><a href="#自定义组件" class="headerlink" title="自定义组件"></a>自定义组件</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;<span class="keyword">import</span> src=<span class="string">"./part1"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">import</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p><a href="https://www.jianshu.com/p/94fc14897c9f" target="_blank" rel="noopener">https://www.jianshu.com/p/94fc14897c9f</a></p>
+<h2 id="diff"><a href="#diff" class="headerlink" title="diff"></a>diff</h2><p>px 单位也支持百分比<br>background 不能连写<br>image 最大包大1MB<br>text and text 显示文本<br>show 只能用布尔值<br>input 没有失焦事件</p>
+<p><a href="https://www.jianshu.com/p/b9d4072e7436?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">https://www.jianshu.com/p/b9d4072e7436?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation</a></p>
+<h2 id="iconfont"><a href="#iconfont" class="headerlink" title="iconfont"></a>iconfont</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 变量图标转码 </span></span><br><span class="line"><span class="keyword">return</span> <span class="built_in">unescape</span>(iconCode.replace(<span class="regexp">/&amp;#x/g</span>, <span class="string">'%u'</span>).replace(<span class="regexp">/;/g</span>, <span class="string">''</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="background"><a href="#background" class="headerlink" title="background"></a>background</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">linear-gradient</span>(<span class="selector-id">#3d3d3d</span>, <span class="selector-id">#1b1b1b</span>);</span><br></pre></td></tr></table></figure>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/e80749d7/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">history</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/97780db2/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">http</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

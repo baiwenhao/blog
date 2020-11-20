@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                canvas | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">canvas</h1>
+
+          <section class="post-info">
+            <span class="post-date">2018/06/25</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">ctx.fillStyle = <span class="string">'#f00'</span></span><br><span class="line">ctx.strokeStyle</span><br><span class="line">ctx.lineWidth</span><br><span class="line"></span><br><span class="line">ctx.fill()</span><br><span class="line">ctx.stroke()</span><br><span class="line"></span><br><span class="line">ctx.lineJoin = <span class="string">'round'</span></span><br><span class="line">ctx.lineWidth = <span class="number">20</span></span><br><span class="line">ctx.fillRect(<span class="number">50</span>, <span class="number">50</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br><span class="line">ctx.strokeRect(<span class="number">50</span>, <span class="number">50</span>, <span class="number">150</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="toDataURL"><a href="#toDataURL" class="headerlink" title="toDataURL"></a>toDataURL</h2><p>导出图片的时候经常报画布被污染，用node做个中间层，保证在同一个域名，<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>)</span><br><span class="line"><span class="keyword">const</span> resolve = <span class="function">(<span class="params">dir</span>) =&gt;</span> path.join(__dirname, <span class="string">'..'</span>, dir)</span><br><span class="line"><span class="keyword">const</span> cors = <span class="built_in">require</span>(<span class="string">'cors'</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/getFaceImg'</span>, cors(), (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> _url = req.query.url</span><br><span class="line">  <span class="comment">// const _url = 'http://image.51biaoqing.com/templet/preview/2b7d926d9d7c42dda19db51b9a3bbcdc.png'</span></span><br><span class="line">  <span class="keyword">const</span> arr = _url.split(<span class="string">'/'</span>)</span><br><span class="line">  <span class="keyword">const</span> name = arr[arr.length - <span class="number">1</span>]</span><br><span class="line">  <span class="keyword">const</span> abs = resolve(<span class="string">'../dist/'</span> + name)</span><br><span class="line">  request(_url).pipe(fs.createWriteStream(abs))</span><br><span class="line">  res.json(&#123; <span class="attr">url</span>: <span class="string">'dist/'</span> + name &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 图片来自网络</span></span><br><span class="line">img.setAttribute(<span class="string">'crossOrigin'</span>, <span class="string">'Anonymous'</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> img2base64 = <span class="function">(<span class="params">url, crossOrigin</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> img = <span class="keyword">new</span> Image()</span><br><span class="line"></span><br><span class="line">    img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> c = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>)</span><br><span class="line"></span><br><span class="line">      c.width = img.naturalWidth</span><br><span class="line">      c.height = img.naturalHeight</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> cxt = c.getContext(<span class="string">'2d'</span>)</span><br><span class="line"></span><br><span class="line">      cxt.drawImage(img, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">      resolve(c.toDataURL(<span class="string">'image/png'</span>))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    crossOrigin &amp;&amp; img.setAttribute(<span class="string">'crossOrigin'</span>, crossOrigin)</span><br><span class="line">    img.src = url</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="透明canvas-背景变黑"><a href="#透明canvas-背景变黑" class="headerlink" title="透明canvas 背景变黑"></a>透明canvas 背景变黑</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> renderWhiteCanvas = <span class="function"><span class="keyword">function</span> (<span class="params">ctx</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> imgData = ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height)</span><br><span class="line">  <span class="keyword">const</span> data = imgData.data</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; data.length; i += <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (data[i + <span class="number">3</span>] &lt; <span class="number">255</span>) &#123;</span><br><span class="line">      data[i] = <span class="number">255</span></span><br><span class="line">      data[i + <span class="number">1</span>] = <span class="number">255</span></span><br><span class="line">      data[i + <span class="number">2</span>] = <span class="number">255</span></span><br><span class="line">      data[i + <span class="number">3</span>] = <span class="number">255</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  ctx.putImageData(imgData, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="download-gif"><a href="#download-gif" class="headerlink" title="download gif"></a>download gif</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> download <span class="keyword">from</span> <span class="string">'downloadjs'</span></span><br><span class="line"></span><br><span class="line">downImg () &#123;</span><br><span class="line">  <span class="keyword">const</span> test = <span class="string">'http://testimg.51biaoqing.com'</span></span><br><span class="line">  <span class="keyword">const</span> host = <span class="string">'maketest.51biaoqing.com'</span></span><br><span class="line">  <span class="keyword">let</span> url = <span class="built_in">document</span>.querySelector(<span class="string">'#build_img'</span>).src</span><br><span class="line">  <span class="keyword">if</span> (location.host === host) &#123;</span><br><span class="line">    url = url.replace(<span class="string">'http://image.51biaoqing.com'</span>, test)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> x = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">  x.open(<span class="string">'GET'</span>, url, <span class="literal">true</span>)</span><br><span class="line">  x.responseType = <span class="string">'blob'</span></span><br><span class="line">  x.onload = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    download(e.target.response, (<span class="built_in">Math</span>.random() + <span class="string">''</span>).slice(<span class="number">2</span>) + <span class="string">'.gif'</span>, <span class="string">'image/gif'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  x.send()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Uint8Array-to-base64"><a href="#Uint8Array-to-base64" class="headerlink" title="Uint8Array to base64"></a>Uint8Array to base64</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Uint8ToString = <span class="function">(<span class="params">u8a</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> CHUNK_SZ = <span class="number">0x8000</span></span><br><span class="line">  <span class="keyword">const</span> c = []</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; u8a.length; i += CHUNK_SZ) &#123;</span><br><span class="line">    c.push(<span class="built_in">String</span>.fromCharCode.apply(<span class="literal">null</span>, u8a.subarray(i, i + CHUNK_SZ)))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> c.join(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 赋值src时要手动添加 data:image/gif;base64,</span></span><br><span class="line"><span class="keyword">const</span> base64 = btoa(Uint8ToString(data))</span><br><span class="line"></span><br><span class="line"><span class="comment">// Uint8Array</span></span><br><span class="line"><span class="keyword">const</span> u82 = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(atob(b64encoded).split(<span class="string">''</span>).map(<span class="function">(<span class="params">c</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> c.charCodeAt(<span class="number">0</span>)</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<p><a href="https://stackoverflow.com/questions/12710001/how-to-convert-uint8-array-to-base64-encoded-string" target="_blank" rel="noopener">https://stackoverflow.com/questions/12710001/how-to-convert-uint8-array-to-base64-encoded-string</a></p>
+<h2 id="blob-to-base64"><a href="#blob-to-base64" class="headerlink" title="blob to base64"></a>blob to base64</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fr = <span class="keyword">new</span> FileReader()</span><br><span class="line">fr.onloadend = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(fr.result)</span><br><span class="line">  <span class="comment">// dataUrl.split(',')[1]</span></span><br><span class="line">&#125;</span><br><span class="line">fr.readAsDataURL(blob)</span><br></pre></td></tr></table></figure>
+<h2 id="阅后即焚"><a href="#阅后即焚" class="headerlink" title="阅后即焚"></a>阅后即焚</h2><p>source-over 默认。在目标图像上显示源图像<br>source-atop 在目标图像顶部显示源图像,源图像位于目标图像之外的部分是不可见的<br>source-in 在目标图像中显示源图像。只有目标图像内的源图像部分会显示，目标图像是透明的,<br>source-out  在目标图像之外显示源图像,只会显示目标图像之外源图像部分，目标图像是透明的,<br>destination-over  在源图像上方显示目标图像,<br>destination-atop  在源图像顶部显示目标图像,源图像之外的目标图像部分不会被显示,<br>destination-in  在源图像中显示目标图像,只有源图像内的目标图像部分会被显示，源图像是透明的,<br>destination-out 在源图像外显示目标图像,只有源图像外的目标图像部分会被显示，源图像是透明的,<br>lighter 显示源图像 + 目标图像。<br>copy  显示源图像。忽略目标图像。<br>xor 使用异或操作对源图像与目标图像进行组合<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">ctx.globalCompositeOperation = <span class="string">'source-atop'</span></span><br></pre></td></tr></table></figure></p>
+<p>关于圆角<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">ctx.lineJoin = <span class="string">'round'</span></span><br><span class="line">ctx.lineWidth = <span class="number">20</span></span><br><span class="line">ctx.strokeRect(<span class="number">50</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">50</span>) <span class="comment">// 正对 stroke 有效果</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 还是靠path了</span></span><br><span class="line"><span class="comment">// https://blog.csdn.net/sarkuya/article/details/49793531</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="吸色"><a href="#吸色" class="headerlink" title="吸色"></a>吸色</h2><p><a href="https://stackoverflow.com/questions/48249044/how-to-get-the-buffer-data-of-my-image-in-img" target="_blank" rel="noopener">https://stackoverflow.com/questions/48249044/how-to-get-the-buffer-data-of-my-image-in-img</a></p>
+<p><a href="http://ju.outofmemory.cn/entry/332635" target="_blank" rel="noopener">http://ju.outofmemory.cn/entry/332635</a><br><a href="http://www.helloblogs.cn/blogs/?p=93" target="_blank" rel="noopener">http://www.helloblogs.cn/blogs/?p=93</a>  jsgif<br><a href="https://www.tumblr.com/tagged/omg-gif" target="_blank" rel="noopener">https://www.tumblr.com/tagged/omg-gif</a></p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/dfe4281e/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">weex</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/874da46b/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">videojs</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

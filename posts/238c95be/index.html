@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                sublime | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">sublime</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/02/17</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">control＋tab 切换标签</span><br><span class="line">cmd + 数字 标签切换</span><br><span class="line">cmd + option + <span class="number">2</span> 双屏</span><br><span class="line">cmd + j 合并成一行</span><br><span class="line">cmd + d 选中一个单词 +d ...</span><br><span class="line">cmd ＋［］缩进</span><br><span class="line">cmd ＋L 选中当前行</span><br><span class="line">cmd ＋ 回车 开辟新行</span><br><span class="line">cmd ＋ shift ＋ 回车 开辟上一行</span><br><span class="line">cmd ＋ shift ＋↕️↔️ 选中代码</span><br><span class="line">cmd + p 搜索文件</span><br><span class="line">cmd + shift + t 恢复刚才关闭的窗口</span><br><span class="line">control + g 行跳转</span><br><span class="line">control + r 函数跳转</span><br><span class="line">control + option + F 格式化js  ( alignment)</span><br></pre></td></tr></table></figure>
+<h2 id="编译nodejs"><a href="#编译nodejs" class="headerlink" title="编译nodejs"></a>编译nodejs</h2><p>自定制的文件保存在Preferences/Browse Packages/User<br>Tools &gt; Build System &gt; new build system<br>/Users/baiwenhao/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/javascript.sublime-build</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"cmd"</span>: [<span class="string">"node"</span>, <span class="string">"$file"</span>],<span class="attr">"selector"</span>: <span class="string">"source.js"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"folder_exclude_patterns"</span>: [ <span class="comment">// 搜索排除, 在项目中也看不见</span></span><br><span class="line">    <span class="string">".git"</span>,</span><br><span class="line">    <span class="string">"node_modules"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"always_show_minimap_viewport"</span>: <span class="literal">true</span>, <span class="comment">// 小地图加背景</span></span><br><span class="line">  <span class="string">"bold_folder_labels"</span>: <span class="literal">true</span>, <span class="comment">// 加粗文件夹名称</span></span><br><span class="line">  <span class="string">"save_on_focus_lost"</span>: <span class="literal">true</span>, <span class="comment">// 失去焦点自动保存</span></span><br><span class="line">  <span class="string">"fade_fold_buttons"</span>: <span class="literal">false</span>, <span class="comment">// 折叠标签显示</span></span><br><span class="line">  <span class="string">"font_face"</span>: <span class="string">"Monaco"</span>,</span><br><span class="line">  <span class="string">"font_options"</span>: [</span><br><span class="line">    <span class="string">"no_bold"</span>,</span><br><span class="line">    <span class="string">"no_italic"</span>,</span><br><span class="line">    <span class="string">"no_round"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"font_size"</span>: <span class="number">13</span>,</span><br><span class="line">  <span class="string">"word_wrap"</span>: <span class="literal">false</span>, <span class="comment">// 关闭自动换行</span></span><br><span class="line">  <span class="string">"caret_extra_width"</span>: <span class="number">2</span>, <span class="comment">// 光标宽度</span></span><br><span class="line">  <span class="string">"highlight_line"</span>: <span class="literal">true</span>, <span class="comment">// 高亮行</span></span><br><span class="line">  <span class="string">"highlight_modified_tabs"</span>: <span class="literal">true</span>, <span class="comment">// 高亮未保存文件</span></span><br><span class="line">  <span class="comment">// 热推出功能！退出时不会提示是否保存文件，而是直接退出 </span></span><br><span class="line">  <span class="comment">// 下次打开软件时，文件保持退出前的状态，没来得及保存的内容都在，但并没有真实的写在原文件里</span></span><br><span class="line">  <span class="string">"hot_exit"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"ignored_packages"</span>:[<span class="string">"Vintage"</span>], <span class="comment">// 不想用的package</span></span><br><span class="line">  <span class="string">"line_padding_bottom"</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="string">"line_padding_top"</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="string">"rulers"</span>: [<span class="number">80</span>], <span class="comment">//宽度指导线</span></span><br><span class="line">  <span class="string">"open_files_in_new_window"</span>: <span class="literal">false</span>, <span class="comment">// 打开文件不启用新窗口</span></span><br><span class="line">  <span class="string">"show_encoding"</span>: <span class="literal">true</span>, <span class="comment">// 显示编码</span></span><br><span class="line">  <span class="string">"tab_size"</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="string">"translate_tabs_to_spaces"</span>: <span class="literal">true</span>, <span class="comment">// tab是空格</span></span><br><span class="line">  <span class="string">"indent_guide_options"</span>: <span class="literal">true</span>, <span class="comment">// 标签闭合垂直竖线</span></span><br><span class="line">  <span class="string">"tree_animation_enabled"</span>: <span class="literal">false</span>, <span class="comment">// 左侧菜单展开动画</span></span><br><span class="line">  <span class="string">"trim_trailing_white_space_on_save"</span>: <span class="literal">true</span>, <span class="comment">// 保存去掉取用空格</span></span><br><span class="line">  <span class="string">"word_separators"</span>: <span class="string">"./\\()\"':,.;&lt;&gt;~!@#$%^&amp;*|+=[]&#123;&#125;`~?"</span>, <span class="comment">// 双加选中 -</span></span><br><span class="line">  <span class="string">"auto_match_enabled"</span>: <span class="literal">false</span>, <span class="comment">// 关闭括号自动补全</span></span><br><span class="line">  <span class="string">"scroll_past_end"</span>: <span class="literal">true</span> <span class="comment">// 要不要滚过头</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">SyncedSideBar 支持当前文件在左侧面板中定位</span><br><span class="line">autofilename 标签匹配提示路径</span><br><span class="line">DocBlockr 代码注释 </span><br><span class="line">SideBarFolders 管理文件夹 </span><br><span class="line">javascript Next ES6 语法高亮</span><br><span class="line">caniuse 扩展右键菜单css</span><br><span class="line">Terminal 右键使用终端</span><br><span class="line">allAutocomplete  匹配的提示词 </span><br><span class="line">html-css-js Prettify 格式化代码 </span><br><span class="line">auto-save  保存</span><br><span class="line">bracketHighlighter 标签闭合提示</span><br><span class="line">sideBarEnhancements 增强右键菜单 </span><br><span class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"ctrl+shift+c"</span>], <span class="string">"command"</span>: <span class="string">"copy_path"</span> &#125; <span class="comment">// 保存当前文件路径</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置文件 Preferences &gt; Package Setting</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"bootstrapped"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"in_process_packages"</span>: [],</span><br><span class="line">  <span class="string">"installed_packages"</span>: [</span><br><span class="line">    <span class="string">"AutoFileName"</span>,</span><br><span class="line">    <span class="string">"HTML-CSS-JS Prettify"</span>,</span><br><span class="line">    <span class="string">"JavaScriptNext - ES6 Syntax"</span>,</span><br><span class="line">    <span class="string">"SideBarEnhancements"</span>,</span><br><span class="line">    <span class="string">"SideBarFolders"</span>,</span><br><span class="line">    <span class="string">"SyncedSideBar"</span>,</span><br><span class="line">    <span class="string">"Terminal"</span>,</span><br><span class="line">    <span class="string">"Vue Syntax Highlight"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考:<br><a href="https://segmentfault.com/a/1190000004025334" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004025334</a><br><a href="https://www.kancloud.cn/digest/sublime-text-complete-guide/61433" target="_blank" rel="noopener">https://www.kancloud.cn/digest/sublime-text-complete-guide/61433</a><br><a href="https://www.bbsmax.com/A/6pdDZrkJw3/" target="_blank" rel="noopener">https://www.bbsmax.com/A/6pdDZrkJw3/</a></p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/849a3ae4/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">vscode</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/e80749d7/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">history</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+    <aside>
+        <div id="toc">
+        </div>
+    </aside>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

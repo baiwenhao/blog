@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                mobile | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">mobile</h1>
+
+          <section class="post-info">
+            <span class="post-date">2018/06/08</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="terminal"><a href="#terminal" class="headerlink" title="terminal"></a>terminal</h2><p><a href="https://github.com/madrobby/zepto/blob/master/src/detect.js#files" target="_blank" rel="noopener">https://github.com/madrobby/zepto/blob/master/src/detect.js#files</a></p>
+<h2 id="wx"><a href="#wx" class="headerlink" title="wx"></a>wx</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> isWeixin = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="regexp">/micromessenger/</span>.test(navigator.userAgent.toLowerCase())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>微信页面 引入jsdk 可以直接调用<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">wx.previewImage(&#123;</span><br><span class="line">  current: e.target.src,</span><br><span class="line">  urls: <span class="keyword">this</span>.list</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="android"><a href="#android" class="headerlink" title="android"></a>android</h2><p>解决输入框获取焦点后，软键盘挡住input的问题，最近总是碰到这个问题，今天彻底解决下,<br>js 是没办法直接获取软键盘的高度，我这里暂时写成百分比，除非 android 通过参数告知前端<br>如果有兼容性问题存在，请告诉我 qq：17899850 wx：bwh2009</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> slideAndroid = &#123;</span><br><span class="line">  goTop (e, n) &#123;</span><br><span class="line">    <span class="keyword">const</span> scrollTop = <span class="built_in">window</span>.pageYOffset</span><br><span class="line">    <span class="keyword">const</span> top = <span class="keyword">this</span>.getOffset(e.target, <span class="string">'offsetTop'</span>)</span><br><span class="line">    <span class="keyword">const</span> height = <span class="built_in">parseInt</span>(<span class="built_in">window</span>.innerHeight * n) + scrollTop</span><br><span class="line">    btn.innerHTML = scrollTop</span><br><span class="line">    <span class="keyword">if</span> (top &gt; height) &#123;</span><br><span class="line">      <span class="keyword">this</span>.h = <span class="built_in">parseInt</span>(top - height)</span><br><span class="line">      <span class="built_in">document</span>.body.style.height = <span class="built_in">document</span>.body.offsetHeight + <span class="keyword">this</span>.h + <span class="string">'px'</span></span><br><span class="line">      <span class="built_in">window</span>.scrollBy(<span class="number">0</span>, <span class="keyword">this</span>.h)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.h = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  goDown (e, n) &#123;</span><br><span class="line">    btn.innerHTML = <span class="built_in">window</span>.pageYOffset + <span class="string">'-'</span> + <span class="keyword">this</span>.h</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.h) &#123;</span><br><span class="line">      <span class="built_in">document</span>.body.style.height = <span class="built_in">document</span>.body.offsetHeight - <span class="keyword">this</span>.h + <span class="string">'px'</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">window</span>.pageYOffset === <span class="keyword">this</span>.h) &#123;</span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="built_in">window</span>.pageYOffset - <span class="keyword">this</span>.h)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  getOffset (el, type) &#123;</span><br><span class="line">    <span class="keyword">let</span> off = el[type]</span><br><span class="line">    <span class="keyword">let</span> par = el.offsetParent</span><br><span class="line">    <span class="keyword">while</span> (par) &#123;</span><br><span class="line">      off += par[type]</span><br><span class="line">      par = par.offsetParent</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> off + el.offsetHeight</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用方法</span></span><br><span class="line"><span class="keyword">const</span> android = navigator.userAgent.match(<span class="regexp">/(Android);?[\s\/]+([\d.]+)?/</span>)</span><br><span class="line"><span class="keyword">if</span> (android) &#123;</span><br><span class="line">  <span class="keyword">switch</span> (t) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'focus'</span>:</span><br><span class="line">      slideAndroid.goTop(e, <span class="number">0.55</span>)</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">'blur'</span>:</span><br><span class="line">      slideAndroid.goDown(e, <span class="number">0.55</span>)</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="clip"><a href="#clip" class="headerlink" title="clip"></a>clip</h2><p>目前都是内侧版本，有时图片和文字会丢失，记得保存的时候输入框失去焦点，图片编译成base64，就没问题了<br><a href="https://github.com/eKoopmans/html2canvas/tree/develop/dist" target="_blank" rel="noopener">https://github.com/eKoopmans/html2canvas/tree/develop/dist</a><br><a href="http://html2canvas.hertzen.com/configuration/" target="_blank" rel="noopener">http://html2canvas.hertzen.com/configuration/</a><br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">html2canvas($(<span class="string">".box"</span>), &#123;</span><br><span class="line">  allowTaint: <span class="literal">true</span>,</span><br><span class="line">  taintTest: <span class="literal">false</span>,</span><br><span class="line">  width: w,</span><br><span class="line">  height: h,</span><br><span class="line">  <span class="comment">// window.devicePixelRatio是设备像素比</span></span><br><span class="line">  dpi: <span class="built_in">window</span>.devicePixelRatio,</span><br><span class="line">  onrendered: <span class="function"><span class="keyword">function</span>(<span class="params">canvas</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> dataUrl = canvas.toDataURL(<span class="string">"image/png"</span>, <span class="number">1.0</span>),</span><br><span class="line">            newImg = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</span><br><span class="line">      newImg.src = dataUrl;</span><br><span class="line">      $(<span class="string">'.box'</span>).empty().append(newImg);</span><br><span class="line">      newImg.style.width = <span class="string">'100%'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="FastClick"><a href="#FastClick" class="headerlink" title="FastClick"></a>FastClick</h2><p><a href="https://www.cnblogs.com/vajoy/p/5522114.html" target="_blank" rel="noopener">https://www.cnblogs.com/vajoy/p/5522114.html</a><br><a href="http://www.cnblogs.com/yexiaochai/p/3442220.html" target="_blank" rel="noopener">http://www.cnblogs.com/yexiaochai/p/3442220.html</a></p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/ef66ebae/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">resource</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/1879f8e5/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">html</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

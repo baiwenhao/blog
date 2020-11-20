@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                linux | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">linux</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/02/07</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="telnet"><a href="#telnet" class="headerlink" title="telnet"></a>telnet</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netstat -nat | grep 3306</span><br><span class="line">nslookup nodejs.org 查看域名地址</span><br><span class="line">telnet 192.168.1.1 80 链接地址</span><br><span class="line">GET /api/http.html HTTP/1.1 发起请求 </span><br><span class="line">Host: nodejs.org 两个回车发送请求</span><br></pre></td></tr></table></figure>
+<h2 id="杀端口"><a href="#杀端口" class="headerlink" title="杀端口"></a>杀端口</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lsof -i tcp:3888 //查看</span><br><span class="line">kill -9 26019 //杀端口</span><br></pre></td></tr></table></figure>
+<h2 id="zip压缩解压"><a href="#zip压缩解压" class="headerlink" title="zip压缩解压"></a>zip压缩解压</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">zip -r 1 2 new 压12</span><br><span class="line">unzip new.zip 解压</span><br><span class="line">unzip -v new.zip 查看</span><br><span class="line">unzip -t new.zip 完整</span><br></pre></td></tr></table></figure>
+<h2 id="centOS-install"><a href="#centOS-install" class="headerlink" title="centOS install"></a>centOS install</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install git</span><br></pre></td></tr></table></figure>
+<h2 id="解决-nvm-command-not-found问题"><a href="#解决-nvm-command-not-found问题" class="headerlink" title="解决 nvm command not found问题"></a>解决 nvm command not found问题</h2><p>安装地址 <a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">https://github.com/nvm-sh/nvm</a></p>
+<p>进入.nvm文件夹，新建.bash_profile：<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">touch .bash_profile <span class="comment">// 新建文件</span></span><br><span class="line">open .bash_profile <span class="comment">// 打开文件</span></span><br></pre></td></tr></table></figure></p>
+<p>copy 一下内容<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> NVM_DIR=<span class="string">"$HOME/.nvm"</span></span><br><span class="line">[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm</span><br></pre></td></tr></table></figure></p>
+<p>属性<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">source .bash_profile</span><br></pre></td></tr></table></figure></p>
+<p>卸载<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">nvm use system</span><br><span class="line">$ npm uninstall -g a_module</span><br></pre></td></tr></table></figure></p>
+<h2 id="centOS安装yarn"><a href="#centOS安装yarn" class="headerlink" title="centOS安装yarn"></a>centOS安装yarn</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">yum -y update</span><br><span class="line">touch /etc/yum.repos.d/mongodb-org.repo</span><br><span class="line">vi /etc/yum.repos.d/mongodb-org.repo</span><br><span class="line"></span><br><span class="line">[mongodb-org]</span><br><span class="line">name=MongoDB Repository</span><br><span class="line">baseurl=http:<span class="comment">//mirrors.aliyun.com/mongodb/yum/redhat/7Server/mongodb-org/3.2/x86_64/</span></span><br><span class="line">gpgcheck=<span class="number">0</span></span><br><span class="line">enabled=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">yum install -y mongodb-org</span><br></pre></td></tr></table></figure>
+<h2 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mv file1 file2</span><br><span class="line">将文件file1改名为file2,</span><br><span class="line"></span><br><span class="line">mv file dir</span><br><span class="line">将文件file移动到目录dir中,</span><br><span class="line"></span><br><span class="line">mv file1 file2 file3 dir</span><br><span class="line">mv -t dir file1 file2 file3</span><br><span class="line">将文件file1,file2和file3移动到目录dir中,</span><br><span class="line"></span><br><span class="line">mv -i file1 file2</span><br><span class="line">将文件file1改名为file2，如果file2已经存在，则询问是否覆盖,i=interactive, prompt before overwrite,</span><br><span class="line">一般情况下，我们使用的mv是一个别名：alias mv=&apos;mv -i&apos;</span><br><span class="line"></span><br><span class="line">mv -f file1 file2</span><br><span class="line">将文件file1改名为file2，即使file2存在，也是直接覆盖掉,f=force, do not prompt before overwriting,这是个危险的选项，最好不用加上它,</span><br><span class="line"></span><br><span class="line">mv dir1 dir2</span><br><span class="line">如果目录dir2不存在，将目录dir1改名为dir2；否则，将dir1移动到dir2中</span><br></pre></td></tr></table></figure>
+<h2 id="上传代码"><a href="#上传代码" class="headerlink" title="上传代码"></a>上传代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">wf<span class="number">-53</span></span><br><span class="line">sudo su -</span><br><span class="line">rz -y | rz -be</span><br><span class="line">unzip a.zip</span><br><span class="line">mv dist<span class="comment">/* ROOT</span></span><br></pre></td></tr></table></figure>
+<h2 id="tomcat"><a href="#tomcat" class="headerlink" title="tomcat"></a>tomcat</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">/usr/local/tomcat/bin</span><br><span class="line">./shutdown.sh</span><br><span class="line">./startup.sh</span><br><span class="line">/usr/local/tomcat/logs 日志目录</span><br><span class="line">tail -f catalina.out 查看日志</span><br><span class="line">ps -ef|grep tomcat 查看服务是否启动</span><br><span class="line">kill <span class="number">-9</span> <span class="number">15559</span> 关闭端口</span><br></pre></td></tr></table></figure>
+<h2 id="centOS-install-mongodb"><a href="#centOS-install-mongodb" class="headerlink" title="centOS install mongodb"></a>centOS install mongodb</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">yum -y update</span><br><span class="line">touch /etc/yum.repos.d/mongodb-org.repo</span><br><span class="line">vi /etc/yum.repos.d/mongodb-org.repo</span><br><span class="line"></span><br><span class="line">[mongodb-org]</span><br><span class="line">name=MongoDB Repository</span><br><span class="line">baseurl=http:<span class="comment">//mirrors.aliyun.com/mongodb/yum/redhat/7Server/mongodb-org/3.2/x86_64/</span></span><br><span class="line">gpgcheck=<span class="number">0</span></span><br><span class="line">enabled=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">yum install -y mongodb-org</span><br></pre></td></tr></table></figure>
+<h2 id="查看历史命令"><a href="#查看历史命令" class="headerlink" title="查看历史命令"></a>查看历史命令</h2><p>history |grep yarn</p>
+<h2 id="开启权限打开app"><a href="#开启权限打开app" class="headerlink" title="开启权限打开app"></a>开启权限打开app</h2><p>sudo spctl –master-disable</p>
+<h2 id="搬瓦工"><a href="#搬瓦工" class="headerlink" title="搬瓦工"></a>搬瓦工</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh root@104.225.233.200 -p 26800</span><br><span class="line"></span><br><span class="line">本地拷贝远程文件,本地拷远程顺序颠倒一下</span><br><span class="line">scp -P 26800 root@104.225.233.208:/root/gradle-2.4-all.zip ./</span><br><span class="line">scp -P 26800 ./vuejs_note.zip root@104.225.233.208:/root/</span><br><span class="line"></span><br><span class="line">ubuntu 安装</span><br><span class="line">apt-get install git</span><br><span class="line">apt-get install curl</span><br></pre></td></tr></table></figure>
+<h2 id="v2ray"><a href="#v2ray" class="headerlink" title="v2ray"></a>v2ray</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl start v2ray</span><br><span class="line">systemctl stop v2ray</span><br><span class="line">service v2ray status</span><br><span class="line"></span><br><span class="line">server</span><br><span class="line">ExecStart=/usr/local/bin/v2ray -config /usr/local/etc/v2ray/config.json</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/v2fly/fhs-install-v2ray/blob/master/README.md" target="_blank" rel="noopener">https://github.com/v2fly/fhs-install-v2ray/blob/master/README.md</a><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;log&quot;: &#123;</span><br><span class="line">        &quot;access&quot;: &quot;/var/log/v2ray/access.log&quot;,</span><br><span class="line">        &quot;error&quot;: &quot;/var/log/v2ray/error.log&quot;,</span><br><span class="line">        &quot;loglevel&quot;: &quot;warning&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;inbound&quot;: &#123;</span><br><span class="line">        &quot;port&quot;: 12345,</span><br><span class="line">        &quot;protocol&quot;: &quot;vmess&quot;,</span><br><span class="line">        &quot;settings&quot;: &#123;</span><br><span class="line">            &quot;clients&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;id&quot;: &quot;d75015f7-c5ca-6992-349e-f04345ccc95f&quot;,</span><br><span class="line">                    &quot;level&quot;: 1,</span><br><span class="line">                    &quot;alterId&quot;: 100</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;streamSettings&quot;: &#123;</span><br><span class="line">            &quot;network&quot;: &quot;tcp&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;detour&quot;: &#123;</span><br><span class="line">            &quot;to&quot;: &quot;vmess-detour-276786&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;outbound&quot;: &#123;</span><br><span class="line">        &quot;protocol&quot;: &quot;freedom&quot;,</span><br><span class="line">        &quot;settings&quot;: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;inboundDetour&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;protocol&quot;: &quot;vmess&quot;,</span><br><span class="line">            &quot;port&quot;: &quot;10000-10010&quot;,</span><br><span class="line">            &quot;tag&quot;: &quot;vmess-detour-276786&quot;,</span><br><span class="line">            &quot;settings&quot;: &#123;&#125;,</span><br><span class="line">            &quot;allocate&quot;: &#123;</span><br><span class="line">                &quot;strategy&quot;: &quot;random&quot;,</span><br><span class="line">                &quot;concurrency&quot;: 5,</span><br><span class="line">                &quot;refresh&quot;: 5</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;streamSettings&quot;: &#123;</span><br><span class="line">                &quot;network&quot;: &quot;kcp&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;outboundDetour&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;protocol&quot;: &quot;blackhole&quot;,</span><br><span class="line">            &quot;settings&quot;: &#123;&#125;,</span><br><span class="line">            &quot;tag&quot;: &quot;blocked&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;routing&quot;: &#123;</span><br><span class="line">        &quot;strategy&quot;: &quot;rules&quot;,</span><br><span class="line">        &quot;settings&quot;: &#123;</span><br><span class="line">            &quot;rules&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;type&quot;: &quot;field&quot;,</span><br><span class="line">                    &quot;ip&quot;: [</span><br><span class="line">                        &quot;0.0.0.0/8&quot;,</span><br><span class="line">                        &quot;10.0.0.0/8&quot;,</span><br><span class="line">                        &quot;100.64.0.0/10&quot;,</span><br><span class="line">                        &quot;127.0.0.0/8&quot;,</span><br><span class="line">                        &quot;169.254.0.0/16&quot;,</span><br><span class="line">                        &quot;172.16.0.0/12&quot;,</span><br><span class="line">                        &quot;192.0.0.0/24&quot;,</span><br><span class="line">                        &quot;192.0.2.0/24&quot;,</span><br><span class="line">                        &quot;192.168.0.0/16&quot;,</span><br><span class="line">                        &quot;198.18.0.0/15&quot;,</span><br><span class="line">                        &quot;198.51.100.0/24&quot;,</span><br><span class="line">                        &quot;203.0.113.0/24&quot;,</span><br><span class="line">                        &quot;::1/128&quot;,</span><br><span class="line">                        &quot;fc00::/7&quot;,</span><br><span class="line">                        &quot;fe80::/10&quot;</span><br><span class="line">                    ],</span><br><span class="line">                    &quot;outboundTag&quot;: &quot;blocked&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/254d477b/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">node</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/20475214/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">mongodb</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+    <aside>
+        <div id="toc">
+        </div>
+    </aside>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

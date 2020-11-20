@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                this | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">this</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/04/15</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h6 id="this全面解析"><a href="#this全面解析" class="headerlink" title="this全面解析"></a>this全面解析</h6><p>this是一个关键字,被自动定义在所有函数的作用域中<br>每个函数的this是在调用时被绑定的，它指向什么取决于函数在哪里调用</p>
+<h2 id="默认绑定"><a href="#默认绑定" class="headerlink" title="默认绑定"></a>默认绑定</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
+<h2 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;</span><br><span class="line">obj.foo()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 隐式赋值</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="string">'2'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dofn</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  fn()</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;</span><br><span class="line">dofn(obj.foo)</span><br></pre></td></tr></table></figure>
+<h2 id="显式绑定"><a href="#显式绑定" class="headerlink" title="显式绑定"></a>显式绑定</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">&#125;</span><br><span class="line">foo.call(obj)</span><br></pre></td></tr></table></figure>
+<h2 id="硬绑定"><a href="#硬绑定" class="headerlink" title="硬绑定"></a>硬绑定</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 显式的强制绑定</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="number">2</span> &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params">something</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.a + something</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> arr = [].slice.call(<span class="built_in">arguments</span>)</span><br><span class="line">  <span class="keyword">return</span> foo.apply(obj, arr)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = bar(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">console</span>.log(b)</span><br><span class="line">setTimeout(bar, <span class="number">100</span>) <span class="comment">// 无法改变</span></span><br><span class="line">bar.call(<span class="built_in">window</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="new-对象过程"><a href="#new-对象过程" class="headerlink" title="new 对象过程"></a>new 对象过程</h2><p>1.创建或者构造一个全新对象<br>2.执行prototype链接<br>3.新对象会绑定到函数调用的this<br>4.如果函数没有返回其他对象，那么new表达式中的函数调用会自动返回这个新对象<br>new会劫持所有普通函数并用构造对象的形式来调用它</p>
+<h2 id="this优先级"><a href="#this优先级" class="headerlink" title="this优先级"></a>this优先级</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 显式绑定优先于隐式绑定</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">  a: <span class="number">2</span>,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;</span><br><span class="line">obj.foo()</span><br><span class="line">obj2.foo()</span><br><span class="line">obj.foo.call(obj2)</span><br><span class="line">obj2.foo.call(obj)</span><br><span class="line"></span><br><span class="line"><span class="comment">// new绑定比隐式绑定优先级高</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="comment">// new 和他一毛钱关系都没有</span></span><br><span class="line">  foo:foo</span><br><span class="line">&#125;</span><br><span class="line">obj.foo(<span class="string">'wenhao'</span>)</span><br><span class="line"><span class="keyword">var</span> bar = <span class="keyword">new</span> obj.foo(<span class="string">'haoke'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(obj)</span><br><span class="line"><span class="built_in">console</span>.log(bar)</span><br><span class="line"></span><br><span class="line"><span class="comment">// new绑定比硬绑定优先级高</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> fn = foo.bind(obj)</span><br><span class="line">fn(<span class="string">'wenhao'</span>)</span><br><span class="line"><span class="keyword">var</span> bar = <span class="keyword">new</span> fn(<span class="string">'haoke'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(bar)</span><br><span class="line"><span class="built_in">console</span>.log(obj)</span><br></pre></td></tr></table></figure>
+<h2 id="判断this"><a href="#判断this" class="headerlink" title="判断this"></a>判断this</h2><p>1.是否在new中调用，是就绑定到新创建的对象上<br>2.是否通过call或者apply(显式绑定)或者硬绑定，this就绑定到指定的对象<br>3.是否在某个上下文中调用，(隐式绑定)，this就绑定在上下文对象<br>4.默认绑定可能是undefined或者全局对象</p>
+<h2 id="软绑定"><a href="#软绑定" class="headerlink" title="软绑定"></a>软绑定</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'name:'</span> + <span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">name</span>: <span class="string">'obj'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123; <span class="attr">name</span>: <span class="string">'obj2'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> obj3 = &#123; <span class="attr">name</span>: <span class="string">'obj3'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> fooBJ = foo.softBind( obj )</span><br><span class="line"></span><br><span class="line">fooBJ()</span><br><span class="line">obj2.foo = foo.softBind( obj )</span><br><span class="line">obj2.foo() <span class="comment">// obj2</span></span><br><span class="line"></span><br><span class="line">fooBJ.call(obj3) <span class="comment">// obj3</span></span><br><span class="line">setTimeout(obj2.foo, <span class="number">10</span>) <span class="comment">// obj</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现方法</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.softBind = <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> fn = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">var</span> curried = [].slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">var</span> bound = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fn.apply(</span><br><span class="line">      (!<span class="keyword">this</span> || <span class="keyword">this</span> === (<span class="built_in">window</span> || global)) ? obj : <span class="keyword">this</span>,</span><br><span class="line">      curried.concat.apply(curried, <span class="built_in">arguments</span>)</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  bound.prototype = <span class="built_in">Object</span>.create(fn.prototype)</span><br><span class="line">  <span class="keyword">return</span> bound</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考： 你不知道的javascript上卷</p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/19656fd5/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">react</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/aaa991c7/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">js</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

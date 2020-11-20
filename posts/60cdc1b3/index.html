@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                array | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">array</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/02/07</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <p>🏄🏄🏄🏄</p>
+<h2 id="base"><a href="#base" class="headerlink" title="base"></a>base</h2><blockquote>
+<p>// 栈方法<br>push 向数组末尾添加一个或多个元素,返回数组length<br>pop 删除数组最后一个元素<br>unshift<br>shift 删除数组第一个元素</p>
+<p>// 排序方法<br>reverse 颠倒顺序<br>sort 排序</p>
+<p>// 操作方法<br>concat 合并数组<br>slice 指定的位置开始删除指定的数组项，并且将删除的数组项构建成一个新数组 起始值1<br>splice 对一个数组做删除、插入和替换，默认1开始计算，返回删除数组</p>
+<p>// 位置方法<br>indexOf 从前向后查找从0开始<br>lastIndexOf 从后向前查找元素在数组中位置</p>
+<p>// 迭代方法<br>forEach<br>let b = a.filter((v) =&gt; v &gt; 10) filter返回大于10的新数组<br>A.every((v) =&gt; v &gt; 10) 全部数字大于10,返回true,有一个不满足就返回false<br>A.some((v) =&gt; v &gt; 10) 有一个数字大于10就返回true<br>A.map(function(elem) { return ‘1’ })<br>A.filter</p>
+</blockquote>
+<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// callback函数接受4个参: 之前值、当前值、索引值以及数组本身</span></span><br><span class="line"><span class="keyword">var</span> sum = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>].reduce(<span class="function">(<span class="params">previous, current, index, array</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> previous + current <span class="comment">// return 返回的值被previous 接收</span></span><br><span class="line">&#125;, <span class="number">10</span>)</span><br><span class="line"><span class="comment">// 当设置初始值时,previous=10，current=1 否则 previous=1，current=2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始设置</span></span><br><span class="line">previous = initialValue = <span class="number">1</span>, current = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一次迭代</span></span><br><span class="line">previous = (<span class="number">1</span> + <span class="number">2</span>) =  <span class="number">3</span>, current = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二次迭代</span></span><br><span class="line">previous = (<span class="number">3</span> + <span class="number">3</span>) =  <span class="number">6</span>, current = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第三次迭代</span></span><br><span class="line">previous = (<span class="number">6</span> + <span class="number">4</span>) =  <span class="number">10</span>, current = <span class="literal">undefined</span> (退出)</span><br></pre></td></tr></table></figure>
+<h2 id="判断数组"><a href="#判断数组" class="headerlink" title="判断数组"></a>判断数组</h2><blockquote>
+<p>Array.isArray()<br>arr.constructor === Array<br>arr instanceof Array<br>Object.prototype.toString.call(obj) === ‘[object Array]’<br>// 同理object Function    object RegExp</p>
+</blockquote>
+<h2 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h2><p>[1,2,3].toString()<br>.valueOf<br>.toLocaleString<br>.join</p>
+<h2 id="数组转对象"><a href="#数组转对象" class="headerlink" title="数组转对象"></a>数组转对象</h2><blockquote>
+<p>[0,1] {0:0,1:1}<br>.entries()</p>
+</blockquote>
+<h2 id="复制数组"><a href="#复制数组" class="headerlink" title="复制数组"></a>复制数组</h2><blockquote>
+<p>[].slice()</p>
+</blockquote>
+<h2 id="删除方法"><a href="#删除方法" class="headerlink" title="删除方法"></a>删除方法</h2><blockquote>
+<p>JavaScript删除数组中的项 delete vs splice<br>一个是设置为undefined，一个是真正的删除了</p>
+</blockquote>
+<h2 id="遍历区别"><a href="#遍历区别" class="headerlink" title="遍历区别"></a>遍历区别</h2><blockquote>
+<p>forEach不能break和return<br>forin不仅遍历数组中元素,还遍历自定义和原型属性,而且顺序是随机的<br>es6 新增加了for-of,正确响应break,continue,return,</p>
+</blockquote>
+<h2 id="相关属性"><a href="#相关属性" class="headerlink" title="相关属性"></a>相关属性</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// hasOwnProperty</span></span><br><span class="line"><span class="comment">// 被非法占用</span></span><br><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">    hasOwnProperty: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    bar: <span class="string">'Here be dragons'</span></span><br><span class="line">&#125;</span><br><span class="line">foo.hasOwnProperty(<span class="string">'bar'</span>) <span class="comment">// 总是返回 false</span></span><br><span class="line"><span class="comment">// 使用其它对象的 hasOwnProperty，并将其上下文设置为foo</span></span><br><span class="line">(&#123;&#125;).hasOwnProperty.call(foo, <span class="string">'bar'</span>) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组方法挂到字符串</span></span><br><span class="line"><span class="built_in">Array</span>.prototype.join.call(<span class="string">'foo'</span>, <span class="string">'-'</span>)</span><br><span class="line"><span class="built_in">Array</span>.prototype.map.call(<span class="string">'foo'</span>, (v) =&gt; &#123; <span class="keyword">return</span> v.toUpperCase() + <span class="string">'.'</span> &#125;).join(<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// reverse 无法用call挂到字符串对象上执行</span></span><br><span class="line">a.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组去重</span></span><br><span class="line"><span class="built_in">Array</span>.prototype.unique = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.sort()</span><br><span class="line">  <span class="keyword">var</span> re=[<span class="keyword">this</span>[<span class="number">0</span>]]</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="keyword">this</span>.length; i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>( <span class="keyword">this</span>[i] !== re[re.length<span class="number">-1</span>])&#123;</span><br><span class="line">      re.push(<span class="keyword">this</span>[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> re</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：<br><a href="http://blog.csdn.net/u014032819/article/details/78002036" target="_blank" rel="noopener">http://blog.csdn.net/u014032819/article/details/78002036</a></p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/fe58b4d1/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">regexp</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/59b49683/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">dom</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+    <aside>
+        <div id="toc">
+        </div>
+    </aside>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

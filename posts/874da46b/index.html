@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                videojs | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">videojs</h1>
+
+          <section class="post-info">
+            <span class="post-date">2018/06/14</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="info"><a href="#info" class="headerlink" title="info"></a>info</h2><p>最近在做视频剪切的一个demo，<br>canplaythrough</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;link href=<span class="string">"//vjs.zencdn.net/5.11/video-js.min.css"</span> rel=<span class="string">"stylesheet"</span>&gt;</span><br><span class="line">&lt;script src=<span class="string">"//vjs.zencdn.net/5.11/video.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">'../common/video/style.css'</span></span><br><span class="line"><span class="keyword">const</span> vjs = <span class="built_in">require</span>(<span class="string">'../common/video/index.js'</span>)</span><br></pre></td></tr></table></figure>
+<p>播放按钮默认在左上角，添加类 vjs-big-play-centered 可让按钮垂直居中显示，也可以覆盖样式 video-js .vjs-big-play-button {}</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;video</span><br><span class="line">    id=<span class="string">"my-player"</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span></span>=<span class="string">"video-js"</span></span><br><span class="line">    controls</span><br><span class="line">    preload=<span class="string">"auto"</span></span><br><span class="line">    poster=<span class="string">"//vjs.zencdn.net/v/oceans.png"</span></span><br><span class="line">    data-setup=<span class="string">'&#123;&#125;'</span>&gt;</span><br><span class="line">  &lt;source src=<span class="string">"//vjs.zencdn.net/v/oceans.mp4"</span> type=<span class="string">"video/mp4"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">source</span>&gt;</span></span></span><br><span class="line">  &lt;source src=<span class="string">"//vjs.zencdn.net/v/oceans.webm"</span> type=<span class="string">"video/webm"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">source</span>&gt;</span></span></span><br><span class="line">  &lt;source src=<span class="string">"//vjs.zencdn.net/v/oceans.ogv"</span> type=<span class="string">"video/ogg"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">source</span>&gt;</span></span></span><br><span class="line">  &lt;p <span class="class"><span class="keyword">class</span></span>=<span class="string">"vjs-no-js"</span>&gt;</span><br><span class="line">    To view <span class="keyword">this</span> video please enable JavaScript, and consider upgrading to a</span><br><span class="line">    web browser that</span><br><span class="line">    &lt;a href=<span class="string">"http://videojs.com/html5-video-support/"</span> target=<span class="string">"_blank"</span>&gt;</span><br><span class="line">      supports HTML5 video</span><br><span class="line">    &lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>p&gt;</span><br><span class="line">&lt;<span class="regexp">/video&gt;</span></span><br></pre></td></tr></table></figure>
+<p>不支持 h5 的播放器使用 flash 播放<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">videojs.options.flash.swf = <span class="string">"video-js.swf"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="api"><a href="#api" class="headerlink" title="api"></a>api</h3><p>api太多了，只列出一些常用方法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">autoplay() 获取或者设置自动播放属性</span><br><span class="line">currentTime() 设置或者获取当前播放进度</span><br><span class="line">duration() 获取视屏的总长度，一般要等到视屏对象完全加载后才能获取到，一般我们会使用定时轮询的方式来获取总时长</span><br><span class="line">ended() 获取当前视屏对象是否已经处于结束状态</span><br><span class="line">enterFullWindow() 当全屏不支持我们可以视频容器延伸到浏览器将让我们一样宽。经过试验改api完全无法使视屏进入全屏。分析源码后发现真正进入全屏的api应该是requestFullscreen()，但可惜该api只能又手势触发函数执行，连模拟点击都没法触发他。</span><br><span class="line">exitFullscreen() 退出全屏，有效的</span><br><span class="line">exitFullWindow() 退出全屏，试了没什么用</span><br><span class="line">height() 设置/获取播放器的高度</span><br><span class="line">width() 设置/获取播放器的宽度</span><br><span class="line">isFullscreen() 检查是否处于全屏模式</span><br><span class="line">load() 开始加载视屏</span><br><span class="line">loop() 在视频中获取或设置循环属性元素</span><br><span class="line">muted() 获取当前的静音状态</span><br><span class="line">pause() 暂停视频</span><br><span class="line">paused() 检查视屏是否暂停</span><br><span class="line">play() 播放视屏</span><br><span class="line">played() 检查视屏播放状态</span><br><span class="line">preload() 获取或设置预加载属性</span><br><span class="line">ready() 视屏对象加载完成后调用ready中的回调函数</span><br><span class="line">poster() 获取或设置海报图像源url</span><br><span class="line">reset() 重载视屏</span><br><span class="line">src() 更换视频源</span><br></pre></td></tr></table></figure>
+<p>参考<br><a href="https://blog.csdn.net/u014739462/article/details/70849195" target="_blank" rel="noopener">https://blog.csdn.net/u014739462/article/details/70849195</a></p>
+<h2 id="ios"><a href="#ios" class="headerlink" title="ios"></a>ios</h2><p>搞了一下午，下班前终于找到办法了<br>在iOS 10 beta<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;video src=<span class="string">"file.mp4"</span> webkit-playsinline=<span class="string">"true"</span> playsinline=<span class="string">"true"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>正确代码是  webkit-playsinline适用于iOS 10-，playinline适用于iOS 10+。</p>
+<p>参考<br><a href="https://webkit.org/blog/6784/new-video-policies-for-ios/" target="_blank" rel="noopener">https://webkit.org/blog/6784/new-video-policies-for-ios/</a></p>
+<h2 id="宽高自适应"><a href="#宽高自适应" class="headerlink" title="宽高自适应"></a>宽高自适应</h2><p>添加类 vjs-fluid</p>
+<h2 id="android"><a href="#android" class="headerlink" title="android"></a>android</h2><p>层级默认是最高的,只要添加<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">x5-video-player-type=<span class="string">'h5'</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="禁止全屏"><a href="#禁止全屏" class="headerlink" title="禁止全屏"></a>禁止全屏</h2><p>webkit-playsinline=”true” playsinline=”true”</p>
+<p><a href="http://taobaofed.org/blog/2016/05/23/video-player/" target="_blank" rel="noopener">http://taobaofed.org/blog/2016/05/23/video-player/</a><br><a href="https://github.com/Avolons/videojs-tutorial-CN" target="_blank" rel="noopener">中文教程地址</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/Events/Media_events" target="_blank" rel="noopener">MDN</a></p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/a59f6c18/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">canvas</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/ef66ebae/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">resource</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

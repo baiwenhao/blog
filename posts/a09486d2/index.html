@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                Axios源码 | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">Axios源码</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/06/23</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="util-js"><a href="#util-js" class="headerlink" title="util.js"></a>util.js</h2><p>工具类里全是自己封装的函数，没有任何es5-es6的语法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  isArray: isArray,</span><br><span class="line">  isArrayBuffer: isArrayBuffer,</span><br><span class="line">  isBuffer: isBuffer,</span><br><span class="line">  isFormData: isFormData,</span><br><span class="line">  isArrayBufferView: isArrayBufferView,</span><br><span class="line">  isString: isString,</span><br><span class="line">  isNumber: isNumber,</span><br><span class="line">  isObject: isObject,</span><br><span class="line">  isUndefined: isUndefined,</span><br><span class="line">  isDate: isDate,</span><br><span class="line">  isFile: isFile,</span><br><span class="line">  isBlob: isBlob,</span><br><span class="line">  isFunction: isFunction,</span><br><span class="line">  isStream: isStream,</span><br><span class="line">  isURLSearchParams: isURLSearchParams,</span><br><span class="line">  isStandardBrowserEnv: isStandardBrowserEnv,</span><br><span class="line">  forEach: forEach,</span><br><span class="line">  merge: merge,</span><br><span class="line">  extend: extend,</span><br><span class="line">  trim: trim</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>is系列用于判断对象数据类型，统一提取toString方法，通过call动态绑定到对象上并执行，对比对象的字符串形式返回true和false</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> toString = <span class="built_in">Object</span>.prototype.toString</span><br></pre></td></tr></table></figure>
+<p>为什么要提取toString函数呢 ？<br>内置对象均来自Object，所以都可以执行该方法，但是内置对象们都重写了toString函数，使之更适合自身的功能需要</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数组</span></span><br><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">array.toString() <span class="comment">// '1,2'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 日期</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2017</span>, <span class="number">6</span>, <span class="number">23</span>, <span class="number">11</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">100</span>)</span><br><span class="line">date.toString() <span class="comment">// Sun Jul 23 2017 11:09:09 GMT+0800 (CST) (中国标准时间)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数字</span></span><br><span class="line"><span class="keyword">var</span> num =  <span class="number">59.9</span></span><br><span class="line">num.toString() <span class="comment">// 59.9</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 布尔</span></span><br><span class="line"><span class="keyword">var</span> bool = <span class="literal">true</span></span><br><span class="line">bool.toString() <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Object</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>: <span class="string">"张三"</span>, <span class="attr">age</span>: <span class="number">18</span>&#125;</span><br><span class="line">obj.toString() <span class="comment">// [object Object]</span></span><br></pre></td></tr></table></figure>
+<p>剩下forEach，merge，extend，trim 函数</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 可遍历数组或对象，回调参数依次是属性值，下标或属性名，原始对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">forEach</span> (<span class="params">obj, fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (obj === <span class="literal">null</span> || <span class="keyword">typeof</span> obj === <span class="string">'undefined'</span>) <span class="keyword">return</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">'object'</span> &amp;&amp; !isArray(obj)) obj = [obj]</span><br><span class="line">  <span class="keyword">if</span> (isArray(obj)) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = obj.length; i &lt; l; i++) &#123;</span><br><span class="line">      fn.call(<span class="literal">null</span>, obj[i], i, obj)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(obj, key)) &#123;</span><br><span class="line">        fn.call(<span class="literal">null</span>, obj[key], key, obj)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 遍历b，当b有function时就把this绑到第三个对象上，并覆盖到a对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">a, b, thisArg</span>) </span>&#123;</span><br><span class="line">  forEach(b, <span class="function"><span class="keyword">function</span> <span class="title">assignValue</span>(<span class="params">val, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (thisArg &amp;&amp; <span class="keyword">typeof</span> val === <span class="string">'function'</span>) &#123;</span><br><span class="line">      a[key] = bind(val, thisArg)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      a[key] = val</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 合并对象，返回新对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span>(<span class="params"><span class="regexp">/* obj1, obj2, obj3, ... */</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> result = &#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">assignValue</span>(<span class="params">val, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> result[key] === <span class="string">'object'</span> &amp;&amp; <span class="keyword">typeof</span> val === <span class="string">'object'</span>) &#123;</span><br><span class="line">      result[key] = merge(result[key], val) <span class="comment">// 递归合并子对象</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      result[key] = val</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = <span class="built_in">arguments</span>.length; i &lt; l; i++) &#123;</span><br><span class="line">    forEach(<span class="built_in">arguments</span>[i], assignValue) <span class="comment">// 逐个遍历，并添加到result对象里</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 去掉左右空格</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.replace(<span class="regexp">/^\s*/</span>, <span class="string">''</span>).replace(<span class="regexp">/\s*$/</span>, <span class="string">''</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>眼尖的同学会发现extend函数还用到bind函数</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">bind</span>(<span class="params">fn, thisArg</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">wrap</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="built_in">arguments</span>.length);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; args.length; i++) &#123;</span><br><span class="line">      args[i] = <span class="built_in">arguments</span>[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fn.apply(thisArg, args)<span class="comment">// fn函数内部this指向thisArg，再用函数包裹并返回，参数个数不固定，因此遍历成数组传入apply执行并返回改函数</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>util模块的方法在其他模块里多次复用，因此要搞懂</p>
+<h2 id="default-js"><a href="#default-js" class="headerlink" title="default.js"></a>default.js</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 最终导出的对象如下</span></span><br><span class="line">&#123;</span><br><span class="line">  adapter: [<span class="built_in">Function</span>: httpAdapter],</span><br><span class="line">  transformRequest: [</span><br><span class="line">    [<span class="built_in">Function</span>: transformRequest]</span><br><span class="line">  ],</span><br><span class="line">  transformResponse: [</span><br><span class="line">    [<span class="built_in">Function</span>: transformResponse]</span><br><span class="line">  ],</span><br><span class="line">  timeout: <span class="number">0</span>,</span><br><span class="line">  xsrfCookieName: <span class="string">'XSRF-TOKEN'</span>,</span><br><span class="line">  xsrfHeaderName: <span class="string">'X-XSRF-TOKEN'</span>,</span><br><span class="line">  maxContentLength: <span class="number">-1</span>,</span><br><span class="line">  validateStatus: [<span class="built_in">Function</span>: validateStatus],</span><br><span class="line">  headers: &#123;</span><br><span class="line">    common: &#123; <span class="attr">Accept</span>: <span class="string">'application/json, text/plain, */*'</span> &#125;,</span><br><span class="line">    <span class="keyword">delete</span>: &#123;&#125;,</span><br><span class="line">    get: &#123;&#125;,</span><br><span class="line">    head: &#123;&#125;,</span><br><span class="line">    post: &#123; <span class="string">'Content-Type'</span>: <span class="string">'application/x-www-form-urlencoded'</span> &#125;,</span><br><span class="line">    put: &#123; <span class="string">'Content-Type'</span>: <span class="string">'application/x-www-form-urlencoded'</span> &#125;,</span><br><span class="line">    patch: &#123; <span class="string">'Content-Type'</span>: <span class="string">'application/x-www-form-urlencoded'</span> &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>##</p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/f255ffad/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">docker</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/4b4371a7/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">front-end</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

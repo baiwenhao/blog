@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                vue | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">vue</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/02/07</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <p>1 异步更新队列<br>Vue 在内部尝试对异步队列使用原生的 Promise.then 和 MutationObserver</p>
+<h2 id="error"><a href="#error" class="headerlink" title="error"></a>error</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">vuex.esm.js?edaa:<span class="number">336</span> [vuex] unknown action type: searchItem</span><br><span class="line"><span class="comment">// 说明你的 actions层 没有 searchItem 方法</span></span><br></pre></td></tr></table></figure>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Vue.filter(<span class="string">'hightKey'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">key, word</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> r = <span class="built_in">eval</span>(<span class="string">"/"</span> + word + <span class="string">"/gi"</span>)</span><br><span class="line">  key.replace(r, <span class="function"><span class="keyword">function</span>(<span class="params">code</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'&lt;font color="green"&gt;'</span> + code + <span class="string">'&lt;/font&gt;'</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> key</span><br><span class="line">&#125;)</span><br><span class="line">&lt;span&gt;&#123;&#123;item.name | hightKey(searchname)&#125;&#125;&lt;<span class="regexp">/span&gt; /</span><span class="regexp">/ 多个过滤器将从左到右依次执行</span></span><br><span class="line"><span class="regexp">&lt;!-- &lt;span v-html="item.names"&gt;&lt;/</span>span&gt; --&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;img :src=&quot;user.realName&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&#123;&#123;d.name&#125;&#125;  当d.name的值为 null 会报错</span><br><span class="line"></span><br><span class="line">过滤data中值等于null的对象即可, 存一个临时对象 然后赋值this.d = data</span><br><span class="line"></span><br><span class="line">this.$emit(&apos;on-confirm&apos;, params)触发当前实例events事件 </span><br><span class="line">1可以在父类events方法里定义方法</span><br><span class="line">2子组件调用&lt;confirm @on-confirm=&quot;methods&quot;&gt;&lt;/confirm&gt;</span><br><span class="line"> 父类可以在methods里面添加方法</span><br><span class="line"></span><br><span class="line">this.$dispatch(&apos;events&apos;, params)在子类触发父类events事件</span><br><span class="line"></span><br><span class="line">&lt;a :href=&quot;&apos;tel:&apos; + data.hostVirtualPhone&quot;&gt;拨打电话&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">只要是按钮 ,1确定有多少种状态 2防止多次点击,比如支付 </span><br><span class="line"></span><br><span class="line">this.$route.query取出来的值都是字符串包括数字</span><br><span class="line"></span><br><span class="line">&#123;&#123;this.$route.query.type === &apos;1&apos; &amp;&amp; &apos;万&apos;&#125;&#125; 这么写有错</span><br><span class="line"></span><br><span class="line">v-for循环重复数据的时候加&lt;span track-by=&quot;$index&quot;</span><br><span class="line"></span><br><span class="line">布局要么全部fixed 要么都别用，否则在苹果手机上上下滚动会很难看，</span><br><span class="line">fixed定位的不会滑动，没定位的会滑上滑下</span><br><span class="line"></span><br><span class="line">Toast 报错信息很多都是英文没有折行 因此加上word-break:break-all;</span><br><span class="line"></span><br><span class="line">设置请求的超时时间Vue.http.options.timeout = 5000</span><br><span class="line"></span><br><span class="line">不要直接用query参数,请求用到的参数都创建一个本地变量,</span><br><span class="line"></span><br><span class="line">在支付页面添加网络提示语句</span><br><span class="line">手机上两个事件会同时触发,只绑定断网就好</span><br><span class="line">window.addEventListener(&quot;offline&quot;, function(e) &#123;alert(&quot;离线&quot;);&#125;)</span><br><span class="line">window.addEventListener(&quot;online&quot;, function(e) &#123;alert(&quot;在线&quot;);&#125;)</span><br><span class="line">if(window.navigator.onLine)&#123;</span><br><span class="line">    alert(&apos;在线&apos;)&#125;</span><br><span class="line">else&#123;</span><br><span class="line">    alert(&apos;离线&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">iphone6plus 字符串是.的时候不吃行高,要加vertical-align: top</span><br><span class="line"></span><br><span class="line">给window绑定匿名函数时在单页引用下,会绑定多次</span><br><span class="line"></span><br><span class="line">当一个值被记录的时候要考虑他的进场 改变 出场 状态</span><br><span class="line"></span><br><span class="line">即使带宽zaikuai,所有的loading 都添加一点延迟</span><br><span class="line"></span><br><span class="line">写了 if 就要写 else，对象匹配一个值，就要考虑到匹配不到的情况，存储在本地的数据都是字符串，不会是number,相加的时候要注意，匹配一个静态数据匹配不到导致页面没加载</span><br><span class="line"></span><br><span class="line">// 数组</span><br><span class="line">初始化一个data对象位，当数据返回null或者string,在组件内部循环data数组就会报错，webview报错就会推出</span><br><span class="line">因此即使status给的是0,也要加上res.data.length &gt;= 1 的判断</span><br><span class="line"></span><br><span class="line">actions 触发的动作事件，不建议放到对应组件内部触发，如果组件多个地方用到，有些页面不需要初始化设置高亮 或者 默认高亮的 逻辑 就不好写了</span><br></pre></td></tr></table></figure>
+<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;div v-<span class="keyword">if</span>=<span class="string">"type === 'A'"</span>&gt;</span><br><span class="line">  A</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;div v-else-if="type === 'B'"&gt;</span></span><br><span class="line"><span class="regexp">  B</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line">&lt;div v-<span class="keyword">else</span>-<span class="keyword">if</span>=<span class="string">"type === 'C'"</span>&gt;</span><br><span class="line">  C</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;div v-else&gt;</span></span><br><span class="line"><span class="regexp">  Not A/</span>B/C</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件不太可能改变，则使用 v-if 较好</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">v-for="(value, key, index) in object"</span></span><br><span class="line"><span class="regexp">v-for="item of items"</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">v-bind:key="item.id" /</span><span class="regexp">/ 组件内部key是必须的</span></span><br></pre></td></tr></table></figure>
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;form v-on:submit.prevent=<span class="string">"onSubmit"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span> <span class="comment">// 会在 submit 调用 event.preventDefault()</span></span><br><span class="line">v-on:keyup.enter</span><br></pre></td></tr></table></figure>
+<h2 id="计算setter"><a href="#计算setter" class="headerlink" title="计算setter"></a>计算setter</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  fullName: &#123;</span><br><span class="line">    <span class="comment">// getter</span></span><br><span class="line">    get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.firstName + <span class="string">' '</span> + <span class="keyword">this</span>.lastName</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// setter</span></span><br><span class="line">    set: <span class="function"><span class="keyword">function</span> (<span class="params">newValue</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> names = newValue.split(<span class="string">' '</span>)</span><br><span class="line">      <span class="keyword">this</span>.firstName = names[<span class="number">0</span>]</span><br><span class="line">      <span class="keyword">this</span>.lastName = names[names.length - <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考<br><a href="https://github.com/lzxb/vue2-demo" target="_blank" rel="noopener">https://github.com/lzxb/vue2-demo</a> 登录注册<br><a href="https://github.com/opendigg/awesome-github-vue/blob/master/README.md" target="_blank" rel="noopener">https://github.com/opendigg/awesome-github-vue/blob/master/README.md</a> // resource<br><a href="https://github.com/lzxb/vue2-demo/blob/master/docs/2.md" target="_blank" rel="noopener">https://github.com/lzxb/vue2-demo/blob/master/docs/2.md</a><br>//  未完待续<br><a href="https://vuefe.cn/v2/guide/forms.html#在组件中使用-v-model" target="_blank" rel="noopener">https://vuefe.cn/v2/guide/forms.html#在组件中使用-v-model</a></p>
+<!-- 在 "change" 而不是 "input" 事件中更新 -->
+<p><input v-model.lazy="msg"></p>
+<p><input v-model.trim="msg"></p>
+<input v-model.number="age" type="number">
+
+
+<h2 id="Transition-Classes"><a href="#Transition-Classes" class="headerlink" title="Transition Classes"></a>Transition Classes</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">v-enter 插入元素之前添加,插入完成之后移除</span><br><span class="line">v-enter-active 插入元素之前添加,动画结束之后移除</span><br><span class="line">v-enter-to 插入元素之后添加,(移除v-enter),动画结束之后移除</span><br><span class="line"></span><br><span class="line">v-leave 触发离开式过渡时添加,一帧之后移除</span><br><span class="line">v-leave-active 触发离开式过渡时添加,动画完成之后移除</span><br><span class="line">v-leave-to 离开式过渡的结束状态,在触发离开式过渡之后一帧添加,同时,移除 v-leave,在过渡/动画完成之后移除</span><br><span class="line"></span><br><span class="line">v-enter-active 和 v-leave-active 可以指定不同的进入/离开过渡 easing 曲线</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 进入和离开动画可以分别 */</span></span><br><span class="line"><span class="comment">/* 设置不同的持续时间(duration)和动画函数(timing function) */</span></span><br><span class="line">.slide-fade-enter-active &#123;</span><br><span class="line">  transition: all <span class="number">.3</span>s ease;</span><br><span class="line">&#125;</span><br><span class="line">.slide-fade-leave-active &#123;</span><br><span class="line">  transition: all <span class="number">.8</span>s cubic-bezier(<span class="number">1.0</span>, <span class="number">0.5</span>, <span class="number">0.8</span>, <span class="number">1.0</span>);</span><br><span class="line">&#125;</span><br><span class="line">.slide-fade-enter, .slide-fade-leave-to &#123;</span><br><span class="line">  transform: translateX(<span class="number">10</span>px);</span><br><span class="line">  opacity: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p>beforeCreate 初始化前<br>created 初始化后</p>
+<p>beforeMount 挂载前<br>mounted 挂载后</p>
+<p>beforeUpdate 数据更新前<br>updated 数据更新后</p>
+<p>activated keep-alive 组件激活时调用<br>deactivated keep-alive 组件停用时调用</p>
+<p>beforeDestroy 实例销毁前<br>destroyed 实例销毁后</p>
+<h2 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h2><p>最新版本 <a target="_blank" href="https://unpkg.com/vue-router/dist/vue-router.js">vue-router</a><br>匹配引擎 <a target="_blank" href="https://github.com/pillarjs/path-to-regexp">path-to-regexp </a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> userId = <span class="number">123</span></span><br><span class="line">router.push(&#123; <span class="attr">name</span>: <span class="string">'user'</span>, <span class="attr">params</span>: &#123; userId &#125;&#125;) <span class="comment">// -&gt; /user/123</span></span><br><span class="line">router.push(&#123; <span class="attr">path</span>: <span class="string">`/user/<span class="subst">$&#123;userId&#125;</span>`</span> &#125;) <span class="comment">// -&gt; /user/123</span></span><br><span class="line"><span class="comment">// This will NOT work</span></span><br><span class="line">router.push(&#123; <span class="attr">path</span>: <span class="string">'/user'</span>, <span class="attr">params</span>: &#123; userId &#125;&#125;) <span class="comment">// -&gt; /user</span></span><br><span class="line"><span class="comment">// 提供了path,params会被忽略</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 命名路由</span></span><br><span class="line">&lt;router-link :to=<span class="string">"&#123; name: 'user', params: &#123; userId: 123 &#125;&#125;"</span>&gt;User&lt;<span class="regexp">/router-link&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">Article</th>
+<th style="text-align:center">Article</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://tympanus.net/codrops/css_reference" target="_blank" rel="noopener">CSS 语法参考</a></td>
+<td style="text-align:center"><a href="http://isux.tencent.com/css3/index.html" target="_blank" rel="noopener">CSS3动画手册</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h2><p>store容器，保存着程序中大部分的状态，组件从store中读取state，如果state在store中发生变化，相应的组件也会得到更新</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    count: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  getters：&#123;</span><br><span class="line">    evenOrOdd: <span class="function"><span class="params">state</span> =&gt;</span> state.count % <span class="number">2</span> === <span class="number">0</span> ? <span class="string">'even'</span> : <span class="string">'odd'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    incrementAsync (&#123; commit, state &#125;) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          commit(<span class="string">'increment'</span>)</span><br><span class="line">          resolve()</span><br><span class="line">        &#125;, <span class="number">1000</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    increment (state) &#123;</span><br><span class="line">      state.count += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">store.commit(<span class="string">'increment'</span>, &#123; <span class="attr">amount</span>: <span class="number">10</span> &#125;)</span><br><span class="line">store.commit(&#123; <span class="attr">type</span>: <span class="string">'increment'</span>, <span class="attr">amount</span>: <span class="number">10</span> &#125;) <span class="comment">// handler 函数仍然保持不变</span></span><br><span class="line">store.dispatch(<span class="string">'incrementAsync'</span>, &#123; <span class="attr">amount</span>: <span class="number">10</span> &#125;)</span><br><span class="line">store.dispatch(&#123; <span class="attr">type</span>: <span class="string">'incrementAsync'</span>, <span class="attr">amount</span>: <span class="number">10</span> &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="mapState"><a href="#mapState" class="headerlink" title="mapState"></a>mapState</h3><p>辅助函数帮助我们生成计算属性<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//</span><br><span class="line">computed: mapState(&#123;</span><br><span class="line">  // 箭头函数可使代码更简练</span><br><span class="line">  count: state =&gt; state.count,</span><br><span class="line"></span><br><span class="line">  // 传字符串参数 &apos;count&apos; 等同于 `state =&gt; state.count`</span><br><span class="line">  countAlias: &apos;count&apos;,</span><br><span class="line"></span><br><span class="line">  // 为了能够使用 `this` 获取局部状态，必须使用常规函数</span><br><span class="line">  countPlusLocalState (state) &#123;</span><br><span class="line">    return state.count + this.localCount</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="mapGetters"><a href="#mapGetters" class="headerlink" title="mapGetters"></a>mapGetters</h3><p>从 store 中的 state 中派生出一些状态, 如对列表进行过滤并计数<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line">  doneTodos: <span class="function">(<span class="params">state, getter</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> state.todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> todo.done)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">store.getters.doneTodos</span><br><span class="line"></span><br><span class="line">computed: &#123;</span><br><span class="line"><span class="comment">// 使用对象展开运算符将 getter 混入 computed 对象中</span></span><br><span class="line">  ...mapGetters([</span><br><span class="line">    <span class="string">'doneTodosCount'</span>,</span><br><span class="line">    <span class="string">'anotherGetter'</span>,</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="mapMutations"><a href="#mapMutations" class="headerlink" title="mapMutations"></a>mapMutations</h3><p>辅助函数将组件中的 methods 映射为 store.commit<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">  ...mapMutations([</span><br><span class="line">    <span class="string">'increment'</span>, <span class="comment">// 将 `this.increment()` 映射为 `this.$store.commit('increment')`</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `mapMutations` 也支持载荷：</span></span><br><span class="line">    <span class="string">'incrementBy'</span> <span class="comment">// 将 `this.incrementBy(amount)` 映射为 `this.$store.commit('incrementBy', amount)`</span></span><br><span class="line">  ]),</span><br><span class="line">  ...mapMutations(&#123;</span><br><span class="line">    add: <span class="string">'increment'</span> <span class="comment">// 将 `this.add()` 映射为 `this.$store.commit('increment')`</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="mapActions"><a href="#mapActions" class="headerlink" title="mapActions"></a>mapActions</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">  ...mapActions([</span><br><span class="line">    <span class="string">'increment'</span>, <span class="comment">// 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `mapActions` 也支持载荷：</span></span><br><span class="line">    <span class="string">'incrementBy'</span> <span class="comment">// 将 `this.incrementBy(amount)` 映射为 `this.$store.dispatch('incrementBy', amount)`</span></span><br><span class="line">  ]),</span><br><span class="line">  ...mapActions(&#123;</span><br><span class="line">    add: <span class="string">'increment'</span> <span class="comment">// 将 `this.add()` 映射为 `this.$store.dispatch('increment')`</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="module"><a href="#module" class="headerlink" title="module"></a>module</h3><p>vivoX7 5.1.1<br>缺少 Object.assign<br>li 标签默认有上边距 设置display flex<br>唤起输入框 input可能被挡住，兼容性写法 document.body || document.documentElement</p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/59b49683/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">dom</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/254d477b/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">node</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+    <aside>
+        <div id="toc">
+        </div>
+    </aside>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

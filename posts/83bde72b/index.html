@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                rem | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">rem</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/02/17</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <p>小米5s 360px<br><img src="/posts/83bde72b/2.jpeg" alt="logo"></p>
+<hr>
+<p>iphone4s 320px<br><img src="/posts/83bde72b/1.jpeg" alt="logo"></p>
+<ul>
+<li><p>多数webapp都具有以下特点</p>
+<ul>
+<li>顶部 和 底部 的bar不管分辨率多大，高度和位置是固定的</li>
+<li>中间内容按照宽度不同平分即可，左右布局的话是中间宽度变化</li>
+</ul>
+</li>
+<li><p>典型的弹性布局开发原则</p>
+<ul>
+<li>文字流式</li>
+<li>空间弹性</li>
+<li>图片等比缩放</li>
+</ul>
+</li>
+</ul>
+<p><img src="/posts/83bde72b/001.jpeg" alt="logo"></p>
+<hr>
+<p><img src="/posts/83bde72b/002.jpeg" alt="logo"></p>
+<blockquote>
+<p>现在大多数设计师是按照iphone6 设备的宽出设计稿的，<br>iphone6宽度是375px，iphone4宽度是320px，<br>如果设计稿按照iphone6设计，那在iphone4上就显示不下，要做适配，如果就是用iphone4那直接用px，别用rem，避免增加复杂度</p>
+</blockquote>
+<h4 id="网易首页"><a href="#网易首页" class="headerlink" title="网易首页"></a>网易首页</h4><p><img src="/posts/83bde72b/003.png" alt="logo"></p>
+<blockquote>
+<p>可以看到用了rem做设备的大小适配<br>window.innerWidth / 7.5</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 不用rem</span><br><span class="line">@media screen and (max-width:321px)&#123;</span><br><span class="line">  .m-navlist&#123;font-size:15px&#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (min-width:321px) and (max-width:400px)&#123;</span><br><span class="line">  .m-navlist&#123;font-size:16px&#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (min-width:400px)&#123;</span><br><span class="line">  .m-navlist&#123;font-size:18px&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="淘宝首页"><a href="#淘宝首页" class="headerlink" title="淘宝首页"></a>淘宝首页</h4><p>window.innerWidth / 10<br>还有一点，某个元素宽度150px，换算成rem是 150 / (window.innerWidth / 10) rem</p>
+<p>1.动态设置viewport</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var scale = 1 / devicePixelRatio;</span><br><span class="line">document.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;)</span><br><span class="line">.setAttribute(&apos;content&apos;,&apos;initial-scale=&apos; + scale + &apos;, maximum-scale=&apos; + scale + &apos;, minimum-scale=&apos; + scale + &apos;, user-scalable=no&apos;);</span><br><span class="line"></span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>2.动态计算fontsize<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + &apos;px&apos;</span><br></pre></td></tr></table></figure></p>
+<p>3.布局的时候，各元素的css尺寸 = 设计稿标注尺寸/设计稿横向分辨率/10</p>
+<p>4.font-size可能需要额外的媒介查询，并且font-size不使用rem，这一点跟网易是一样的</p>
+<p>5.font-size可能需要额外的媒介查询，并且font-size不使用rem，这一点跟网易是一样的。</p>
+<p>最后还有一个情况要说明，跟网易一样，淘宝也设置了一个临界点，当设备竖着时横向物理分辨率大于1080时，html的font-size就不会变化了，原因也是一样的，分辨率已经可以去访问电脑版页面了</p>
+<h5 id="比较网易与淘宝的做法"><a href="#比较网易与淘宝的做法" class="headerlink" title="比较网易与淘宝的做法"></a>比较网易与淘宝的做法</h5><blockquote>
+<p>共同点：</p>
+</blockquote>
+<p>都能适配所有的手机设备，对于pad，网易与淘宝都会跳转到pc页面，不再使用触屏版的页面<br>都需要动态设置html的font-size<br>布局时各元素的尺寸值都是根据设计稿标注的尺寸计算出来，由于html的font-size是动态调整的，所以能够做到不同分辨率下页面布局呈现等比变化<br>容器元素的font-size都不用rem，需要额外地对font-size做媒介查询<br>都能应用于尺寸不同的设计稿，只要按以上总结的方法去用就可以了</p>
+<hr>
+<blockquote>
+<p>不同点</p>
+</blockquote>
+<p>淘宝的设计稿是基于750的横向分辨率，网易的设计稿是基于640的横向分辨率，还要强调的是，虽然设计稿不同，但是最终的结果是一致的，设计稿的尺寸一个公司设计人员的工作标准，每个公司不一样而已<br>淘宝还需要动态设置viewport的scale，网易不用<br>最重要的区别就是：网易的做法，rem值很好计算，淘宝的做法肯定得用计算器才能用好了 。不过要是你使用了less和sass这样的css处理器，就好办多了，以淘宝跟less举例，我们可以这样编写less：</p>
+<p>关于这种做法的具体实现，淘宝已经给我们提供了一个开源的解决方案，具体请查看：<br><a href="https://github.com/amfe/lib-flexible" target="_blank" rel="noopener">https://github.com/amfe/lib-flexible</a></p>
+<p>我公司的做法：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const max = 640</span><br><span class="line">const db = document.body</span><br><span class="line">const dc = document.children[0]</span><br><span class="line">const fn = () =&gt; &#123;</span><br><span class="line">  const w = window.innerWidth</span><br><span class="line">  if (w &lt; max) &#123;</span><br><span class="line">    dc.style.fontSize = w / 3.2 + &apos;px&apos;</span><br><span class="line">    db.classList.remove(&apos;vue-box&apos;)</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    dc.style.fontSize = max / 3.2 + &apos;px&apos;</span><br><span class="line">    db.classList.add(&apos;vue-box&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">window.addEventListener(&apos;resize&apos;, fn)</span><br><span class="line">fn()</span><br></pre></td></tr></table></figure></p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/d3b694df/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">less</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/84da2c8b/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">jsonp</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

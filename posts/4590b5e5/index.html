@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                css3 | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">css3</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/02/16</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="will-change"><a href="#will-change" class="headerlink" title="will-change"></a>will-change</h2><p><a href="https://www.w3cplus.com/css3/introduction-css-will-change-property.html" target="_blank" rel="noopener">https://www.w3cplus.com/css3/introduction-css-will-change-property.html</a></p>
+<h2 id="background"><a href="#background" class="headerlink" title="background"></a>background</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 背景色设置</span><br><span class="line">background-image: linear-gradient(to bottom , #7A88FF, #7AFFAF);</span><br><span class="line">bg-image:linear-gradient(90deg, #1cf7ff, #ff1c7c); /*左右*/</span><br><span class="line">bg-image:linear-gradient(top, red 0%, yellow 50%, blue 100%);/*上下*/</span><br><span class="line">bg-image:linear-gradient(top left, red 0%, yellow 50%, blue 100%);</span><br><span class="line">background-image: linear-gradient(260deg, #e9ebf8, #adaec6);</span><br><span class="line">background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));</span><br><span class="line">to bottom(从上边开始)</span><br><span class="line">to right(从左边开始)</span><br><span class="line">to left(从右边开始)</span><br><span class="line">to top(从下边开始)</span><br><span class="line">to top left(从右下角开始)</span><br><span class="line">to top right(从左下角开始)</span><br><span class="line">to bottom left(从右上角开始)</span><br><span class="line">to bottom right(从右下角开始)</span><br><span class="line"></span><br><span class="line">// 控制背景图片大小 10px 10px</span><br><span class="line">background-size: cover</span><br><span class="line"></span><br><span class="line">// 保持背景图片的宽高比</span><br><span class="line">background-size: contain</span><br><span class="line"></span><br><span class="line">background-origin: content-box、padding-box 或 border-box;背景图</span><br><span class="line">border;从border边框位置算起</span><br><span class="line">padding;从padding位置算起</span><br><span class="line">content;从content-box内容区域位置算起；</span><br><span class="line"></span><br><span class="line">background-clip: </span><br><span class="line">content-box、padding-box 或 border-box;背景色</span><br><span class="line">border;背景在border边框下开始显示</span><br><span class="line">padding;背景在padding下开始显示</span><br><span class="line">content;背景在内容区域下开始显示</span><br><span class="line">no-clip;默认属性值，类似与background-clip: border;</span><br><span class="line"></span><br><span class="line">background-break:</span><br><span class="line">continuous;此属性是默认值，忽视区域之间的间隔空隙（给它们应用图片就好像把它们看成一个区域一样）</span><br><span class="line">bounding-box;重新考虑区域之间的间隔</span><br><span class="line">each-box;对每一个独立的标签区域进行背景的重新划分</span><br></pre></td></tr></table></figure>
+<h2 id="transfrom"><a href="#transfrom" class="headerlink" title="transfrom"></a>transfrom</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">角度   rotateX( -5deg )</span><br><span class="line">倾斜   skew( 20deg,20deg )</span><br><span class="line">比例   scale( 2.0 )</span><br><span class="line">位移   translateY( -5deg )</span><br><span class="line">链式   transform: rotate(20deg) skew(-10deg) scale(3.0) translate(100px,0);</span><br><span class="line">改变元素基点 transform-origin: left top; //默认中心点开始变形</span><br><span class="line"></span><br><span class="line">transform: matrix(1, 0, 0, 1, 30, 30)/* a=1, b=0, c=0, d=1, e=30, f=30 */</span><br></pre></td></tr></table></figure>
+<h5 id="消除transition闪屏"><a href="#消除transition闪屏" class="headerlink" title="消除transition闪屏"></a>消除transition闪屏</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-webkit-transform-style: preserve-3d;</span><br><span class="line">-webkit-backface-visibility: hidden;</span><br><span class="line">-webkit-perspective: 1000;</span><br></pre></td></tr></table></figure>
+<h6 id="硬件加速"><a href="#硬件加速" class="headerlink" title="硬件加速"></a>硬件加速</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-webkit-transform: translate3d(0,0,0)</span><br><span class="line">-moz-transform: translate3d(0,0,0)</span><br><span class="line">-ms-transform: translate3d(0,0,0)</span><br><span class="line">transform: translate3d(0,0,0)</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/4590b5e5/1.png" alt="logo"><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">transform: matrix(2, 0, 0, 2, 30, 30); a=1, b=0, c=0, d=1, e=30, f=30</span><br><span class="line">matrix(缩放X, 0, 0, 缩放Y, x坐标, y坐标)</span><br><span class="line">transform-style:</span><br><span class="line">flat 子元素将保留其3d位置</span><br><span class="line">preserve-3d 不保留</span><br><span class="line">el.style.transformStyle = flat</span><br></pre></td></tr></table></figure></p>
+<h2 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">属性</span><br><span class="line">过渡性质    transition-property：height;</span><br><span class="line">过渡时间    transition-duration：.3s;</span><br><span class="line">延迟时间    transition-delay：0；</span><br><span class="line">过渡类型    transition-timing-function：ease;</span><br><span class="line"></span><br><span class="line">过渡类型</span><br><span class="line">逐渐变慢          ease (加速)</span><br><span class="line">匀速             linear</span><br><span class="line">加速             ease-in</span><br><span class="line">减速             ease-out</span><br><span class="line">加速然后减速      ease-in-out</span><br><span class="line">自定义          cubic-bezier [0,0],[1,1]x1,x2,y1,y2  </span><br><span class="line"></span><br><span class="line">// 兼容性</span><br><span class="line">transition-property:width;</span><br><span class="line">-moz-transition-property: width; /* Firefox 4 */</span><br><span class="line">-webkit-transition-property:width; /* Safari 和 Chrome */</span><br><span class="line">-o-transition-property:width; /* Opera */</span><br><span class="line"></span><br><span class="line">// 实例</span><br><span class="line">transitiontext-shadow 1s linear .5s；//第二个动画延迟0.5s;</span><br><span class="line">or</span><br><span class="line">transition:1s 2s height cubic-bezier(.83,.97,.05,1.44); //延迟两秒执行</span><br><span class="line"></span><br><span class="line">// js设置</span><br><span class="line">div.style.webkitTransitionProperty = &apos;-webkit-transform’;</span><br><span class="line">div.style.webkitTransitionTimingFunction = &apos;cubic-bezier(0, 0, 0.2, 1)’;</span><br><span class="line"></span><br><span class="line">// 事件</span><br><span class="line">webkitTransitionEnd</span><br><span class="line">transition动画执行结束,会触发webkitTransition事件</span><br><span class="line">webkitAnimationEnd事件只在元素向右移动,然后向左返回之后触发一次,而webkitTransitionEnd事件将在元素向右移动之后触发一次,在元素向左返回之后再触发一次</span><br><span class="line"></span><br><span class="line">http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html</span><br></pre></td></tr></table></figure>
+<h2 id="animate"><a href="#animate" class="headerlink" title="animate"></a>animate</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">属性</span><br><span class="line">animation-name: rainbow;</span><br><span class="line">animation-duration: 1s;</span><br><span class="line">animation-timing-function: linear;</span><br><span class="line">animation-delay: 1s;</span><br><span class="line">animation-fill-mode: forwards; // backwards, both, none</span><br><span class="line">animation-direction: normal;</span><br><span class="line">animation-iteration-count: 3;</span><br><span class="line">animation: 1s 1s rainbow linear 3 forwards normal;</span><br><span class="line"></span><br><span class="line">animation-name                    名称</span><br><span class="line">animation-duration                播放时间,默认0   </span><br><span class="line">animation-timing-function         播放方式,默认ease   </span><br><span class="line">animation-delay                   动画何时开始,默认0</span><br><span class="line">animation-iteration-count         循环的次数n,infinite代表无限,默认1</span><br><span class="line">animation-direction               默认是normal，alternate则第偶数次向前播放，奇数次向反方向播放</span><br><span class="line">animation-fill-mode               动画时间之外的状态</span><br><span class="line">animation-play-state              是否运行或暂停,默认running</span><br><span class="line">animation: myfirst 5s linear 2s infinite alternate;</span><br><span class="line"></span><br><span class="line">控制步数 // http://jsfiddle.net/simurai/CGmCe/light/</span><br><span class="line">animation: myfirst 3s steps(10) infinite alternate;</span><br><span class="line"></span><br><span class="line">@keyframes myfirst&#123;</span><br><span class="line">0%   &#123;background: red;&#125;</span><br><span class="line">25%  &#123;background: yellow;&#125;</span><br><span class="line">50%  &#123;background: blue;&#125;</span><br><span class="line">100% &#123;background: green;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">事件</span><br><span class="line">-webkit-animation动画其实有三个事件： </span><br><span class="line">开始事件 webkitAnimationStart </span><br><span class="line">结束事件 webkitAnimationEnd </span><br><span class="line">重复运动事件 webkitAnimationIteration</span><br><span class="line"></span><br><span class="line">方法</span><br><span class="line">animation: 1s name infinite; // 播放时间 播放类名 无线循环</span><br><span class="line">animation: 1s name forwards; // 停留在最后一帧  backwards回到第一帧</span><br><span class="line"></span><br><span class="line">@keyframes pound &#123;</span><br><span class="line">  from，to &#123; transform: none; &#125;</span><br><span class="line">  50% &#123; transform: scale(1.2); &#125;   // 1turn = 360deg</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">打印机效果</span><br><span class="line">h1 &#123;</span><br><span class="line">  font: bold 200% Consolas, Monaco, monospace;</span><br><span class="line">  border-right: .1em solid;</span><br><span class="line">  width: 16.5em; /* fallback */</span><br><span class="line">  width: 30ch; /* # of chars */</span><br><span class="line">  margin: 2em 1em;</span><br><span class="line">  white-space: nowrap;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  animation: typing 20s steps(30, end),</span><br><span class="line">    blink-caret .5s step-end infinite alternate;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes typing &#123; from &#123; width: 0; &#125; &#125;</span><br><span class="line">@keyframes blink-caret &#123; 50% &#123; border-color: transparent; &#125; &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="selector"><a href="#selector" class="headerlink" title="selector"></a>selector</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">属性选择器</span><br><span class="line">a[href^=&quot;http://“]</span><br><span class="line">a[href^=&quot;png“]</span><br><span class="line">a[class^=‘a&apos;]开头</span><br><span class="line">a[class$=‘a&apos;]结束</span><br><span class="line">a[class~=‘a&apos;]</span><br><span class="line">a[class*=‘a&apos;]包含</span><br><span class="line">input[type=&apos;text’]</span><br><span class="line">input:checked</span><br><span class="line"></span><br><span class="line">伪类选择器</span><br><span class="line">p:before, p:after </span><br><span class="line">p:nth-child(n+2):nth-child(odd):nth-child(-n+9)</span><br><span class="line">p:first-child</span><br><span class="line">p:last-child</span><br><span class="line">odd基数2n+1</span><br><span class="line">even偶数2n+0,2n</span><br><span class="line">2-父级下第二个子元素是P标签时匹配</span><br><span class="line">2n-除了P标签还有别的标签则匹配基数P标签，否则就是偶数</span><br><span class="line">3n+1-同上匹配1,4.7，否则3，6，9</span><br><span class="line"></span><br><span class="line">p:nth-last-child(n)&#123;&#125;</span><br><span class="line">最后一个子元素算起,类似nth-child</span><br><span class="line"></span><br><span class="line">div p:first-child&#123;&#125;</span><br><span class="line">父级下第一个子元素为p标签时匹配，对应last-child</span><br><span class="line"></span><br><span class="line">div p:first-of-type&#123;&#125;</span><br><span class="line">父级下同类型中第一个p标签，对应last-of-type</span><br><span class="line"></span><br><span class="line">p:nth-of-type(n)&#123;&#125;</span><br><span class="line">匹配指定的标签为一个合集,类似nth-child （不一定是相同的元素）</span><br><span class="line"></span><br><span class="line">p:nth-last-of-type(n)&#123;&#125;</span><br><span class="line">选择指定类型的元素，从元素的最后一个开始计算</span><br><span class="line"></span><br><span class="line">p:only-child&#123;&#125;</span><br><span class="line">父类下只剩下一个P元素</span><br><span class="line"></span><br><span class="line">p:only-of-type()&#123;&#125;</span><br><span class="line">没有同类型的相同元素</span><br><span class="line"></span><br><span class="line">p:empty</span><br><span class="line">为空</span><br><span class="line"></span><br><span class="line">p~p&#123;&#125;</span><br><span class="line">相邻的都是p标签时</span><br><span class="line"></span><br><span class="line">#box *:not(h1)&#123;&#125;</span><br><span class="line">li:not(.first-item):not(:last-of-type)</span><br><span class="line">如果想对某个结构元素使用样式，但是又想排除这个元素下面的某个子元素，让它不使用此样式 </span><br><span class="line"></span><br><span class="line">h1 + p &#123;color:#ddd;&#125;</span><br><span class="line">选择紧接在h1元素后出现的p元素</span><br><span class="line"></span><br><span class="line">默认选中样式</span><br><span class="line">::selection &#123; background:#d3d3d3; color:#555; &#125;</span><br><span class="line">::-moz-selection &#123; background:#d3d3d3; color:#555; &#125;</span><br><span class="line">::-webkit-selection &#123; background:#d3d3d3; color:#555; &#125;</span><br><span class="line"></span><br><span class="line">select去掉三角</span><br><span class="line">input::-webkit-outer-spin-button,</span><br><span class="line">input::-webkit-inner-spin-button &#123;</span><br><span class="line">    -webkit-appearance: none !important;</span><br><span class="line">    margin: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">div &gt; * :not(:first-child) &#123;</span><br><span class="line">  margin-left:10px</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="object-fit"><a href="#object-fit" class="headerlink" title="object-fit"></a>object-fit</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="去掉点击元素产生背景或者边框"><a href="#去掉点击元素产生背景或者边框" class="headerlink" title="去掉点击元素产生背景或者边框"></a>去掉点击元素产生背景或者边框</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// ios用户点击一个链接，会出现一个半透明灰色遮罩, 如果想要禁用，可设置-webkit-tap-highlight-color的alpha值为0去除灰色半透明遮罩；</span><br><span class="line">// android用户点击一个链接，会出现一个边框或者半透明灰色遮罩, 不同生产商定义出来额效果不一样，可设置-webkit-tap-highlight-color的alpha值为0去除部分机器自带的效果；</span><br><span class="line">// winphone系统,点击标签产生的灰色半透明背景，能通过设置&lt;meta name=&quot;msapplication-tap-highlight&quot; content=&quot;no&quot;&gt;去掉；</span><br><span class="line">// 特殊说明：有些机型去除不了，如小米2。对于按钮类还有个办法，不使用a或者input标签，直接用div标签</span><br><span class="line">a,button,input,textarea &#123;</span><br><span class="line">    -webkit-tap-highlight-color: rgba(0,0,0,0);</span><br><span class="line">    -webkit-user-modify:read-write-plaintext-only; //-webkit-user-modify有个副作用，就是输入法不再能够输入多个字符</span><br><span class="line">&#125;</span><br><span class="line">// 也可以</span><br><span class="line">* &#123; -webkit-tap-highlight-color: rgba(0,0,0,0); &#125;</span><br><span class="line">// winphone下</span><br><span class="line">&lt;meta name=&quot;msapplication-tap-highlight&quot; content=&quot;no&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="美化表单"><a href="#美化表单" class="headerlink" title="美化表单"></a>美化表单</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 一、使用appearance改变webkit浏览器的默认外观</span><br><span class="line">input,select &#123; -webkit-appearance:none; appearance: none; &#125;</span><br><span class="line"></span><br><span class="line">// 二、winphone下，使用伪元素改变表单元素默认外观</span><br><span class="line">//1.禁用select默认箭头，::-ms-expand修改表单控件下拉箭头，设置隐藏并使用背景图片来修饰</span><br><span class="line">select::-ms-expand &#123; display:none; &#125;</span><br><span class="line"></span><br><span class="line">// 2.禁用radio和checkbox默认样式，::-ms-check修改表单复选框或单选框默认图标，设置隐藏并使用背景图片来修饰</span><br><span class="line">input[type=radio]::-ms-check,</span><br><span class="line">input[type=checkbox]::-ms-check &#123; display:none; &#125;</span><br><span class="line"></span><br><span class="line">// 3.禁用pc端表单输入框默认清除按钮，::-ms-clear修改清除按钮，设置隐藏并使用背景图片来修饰</span><br><span class="line">input[type=text]::-ms-clear,</span><br><span class="line">input[type=tel]::-ms-clear,</span><br><span class="line">input[type=number]::-ms-clear &#123; display:none; &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 禁止长按链接与图片弹出菜单</span><br><span class="line">a,img &#123; -webkit-touch-callout: none &#125;</span><br><span class="line"></span><br><span class="line">// 禁止ios和android用户选中文字</span><br><span class="line">html,body &#123;-webkit-user-select:none; user-select: none; &#125;</span><br><span class="line"></span><br><span class="line">// 改变输入框placeholder的颜色值</span><br><span class="line">::-webkit-input-placeholder &#123; /* WebKit browsers */</span><br><span class="line">color: #999; &#125;</span><br><span class="line">:-moz-placeholder &#123; /* Mozilla Firefox 4 to 18 */</span><br><span class="line">color: #999; &#125;</span><br><span class="line">::-moz-placeholder &#123; /* Mozilla Firefox 19+ */</span><br><span class="line">color: #999; &#125;</span><br><span class="line">:-ms-input-placeholder &#123; /* Internet Explorer 10+ */</span><br><span class="line">color: #999; &#125;</span><br><span class="line">input:focus::-webkit-input-placeholder&#123; color:#999; &#125;</span><br><span class="line"></span><br><span class="line">// android上去掉语音输入按钮</span><br><span class="line">input::-webkit-input-speech-button &#123;display: none&#125;</span><br><span class="line"></span><br><span class="line">// 阻止windows Phone的默认触摸事件</span><br><span class="line">/*说明：winphone下默认触摸事件事件使用e.preventDefault是无效的，可通过样式来禁用，如：*/</span><br><span class="line">html &#123; -ms-touch-action:none; &#125; //禁止winphone默认触摸事件</span><br><span class="line"></span><br><span class="line">// 取消input在ios下，输入的时候英文首字母的默认大写</span><br><span class="line">input autocapitalize=&quot;off&quot; autocorrect=&quot;off&quot;\</span><br><span class="line"></span><br><span class="line">//IOS有拍照、录像、选取本地图片功能，部分Android只有选择本地图片功能。Winphone不支持</span><br><span class="line">input type=&quot;file&quot; accept=&quot;images/*&quot;</span><br><span class="line">input type=&quot;file&quot; accept=&quot;video/*&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="重力感应事件"><a href="#重力感应事件" class="headerlink" title="重力感应事件"></a>重力感应事件</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 运用HTML5的deviceMotion，调用重力感应事件</span><br><span class="line">if(window.DeviceMotionEvent)&#123;</span><br><span class="line">    document.addEventListener(&apos;devicemotion&apos;, deviceMotionHandler, false)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var speed = 30;</span><br><span class="line">var x = y = z = lastX = lastY = lastZ = 0;</span><br><span class="line">function deviceMotionHandler(eventData)&#123;</span><br><span class="line">    var acceleration = event.accelerationIncludingGravity;</span><br><span class="line">    x = acceleration.x;</span><br><span class="line">    y = acceleration.y;</span><br><span class="line">    z = acceleration.z;</span><br><span class="line">    if(Math.abs(x-lastX)&gt;speed || Math.abs(y-lastY)&gt;speed || Math.abs(z-lastZ)&gt;speed )&#123;</span><br><span class="line">        //这里是摇动后要执行的方法</span><br><span class="line">        yaoAfter();</span><br><span class="line">    &#125;</span><br><span class="line">    lastX = x;</span><br><span class="line">    lastY = y;</span><br><span class="line">    lastZ = z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function yaoAfter()&#123;</span><br><span class="line">    //do something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="隐藏滚动条"><a href="#隐藏滚动条" class="headerlink" title="隐藏滚动条"></a>隐藏滚动条</h2><p>&amp;::-webkit-scrollbar {<br>   width: 0;<br>}</p>
+<h2 id="字体变清晰，变细用CSS怎么做？"><a href="#字体变清晰，变细用CSS怎么做？" class="headerlink" title="字体变清晰，变细用CSS怎么做？"></a>字体变清晰，变细用CSS怎么做？</h2><p>-webkit-font-smoothing: antialiased;</p>
+<h2 id="align"><a href="#align" class="headerlink" title="align"></a>align</h2><p>align-items: center; y轴居中，等分<br>align-content: center; y轴居中，无间隙，多行才有想过</p>
+<p>参考：<a href="https://www.w3schools.com/cssref/css3_pr_filter.asp" target="_blank" rel="noopener">https://www.w3schools.com/cssref/css3_pr_filter.asp</a></p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/98a28c55/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">flex</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/d73c0d37/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">es6</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+    <aside>
+        <div id="toc">
+        </div>
+    </aside>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

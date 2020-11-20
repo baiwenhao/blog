@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                docker | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">docker</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/07/24</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><p>docker info<br>docker images<br>docker ps -l || -a<br>docker version<br>docker stop id<br>docker start id<br>docker rmi id<br>docker rm name<br>docker search name<br>docker pull name</p>
+<h2 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h2><p>Status: Downloaded newer image for mongo:latest (下载成功)<br>docker run -d -v /var/lib/mongo:/data/db -v /home/user/mongo.conf:/etc/mongo.conf -p port:port image_name</p>
+<p>docker run -p 27017:27017 -v /Users/baiwenhao/workSpace/mongodb/data:/data -d mongo<br>docker run -p 27017:27017 -v /c/Users/Administrator/Desktop/mongodb/data:/data -d mongo </p>
+<p>-p 27017:27017 将容器的27017 端口映射到主机的27017 端口<br>-v $PWD/db:/data/db 将主机中当前目录下的db挂载到容器的/data/db，作为mongo数据存储目录</p>
+<h2 id="镜像加速"><a href="#镜像加速" class="headerlink" title="镜像加速"></a>镜像加速</h2><p>容器镜像服务 =&gt; 镜像加速器 （我的加速地址） <a href="https://k454h3he.mirror.aliyuncs.com" target="_blank" rel="noopener">https://k454h3he.mirror.aliyuncs.com</a><br>docker的配置中找到daemon =&gt; registry mirrors (添加地址) =&gt; apply</p>
+<p>参考<br><a href="https://docs.docker.com/samples/library/mongo/#shared-tags" target="_blank" rel="noopener">https://docs.docker.com/samples/library/mongo/#shared-tags</a></p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/ec86cd8e/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">socker</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/a09486d2/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">Axios源码</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>

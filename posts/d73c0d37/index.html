@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+          <head>
+        <meta charset="utf-8">
+            
+            <title>
+                es6 | wenhao blog
+            </title>
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+            <meta name="theme-color" content="#4184f3">
+            
+            
+            <link href="/favicon.ico" rel="icon"/>
+            
+
+            <link rel="stylesheet" href="/css/highlight.light.css">
+            <link rel="stylesheet" href="/css/prism-customize.css">
+            <link rel="stylesheet" href="/css/nav-icon.css">
+            <link rel="stylesheet" href="/css/waves.min.css">
+            <link rel="stylesheet" href="/css/jquery.tocify.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/nav-indicator.css">
+            
+  
+
+  
+            </meta>
+        </meta>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body>
+        <header>
+            <!-- cover image or sth. -->
+        </header>
+        <div id="main" class="m-scene">
+            
+<div class="nav-wrapper">
+
+    <div class="container">
+        <nav>
+            <div class="logo wave">
+                <a href="/" id="logo">
+                    wenhao blog
+                </a>
+            </div>
+            <div class="nav-toggle-icon" >
+                <div class="material-hamburger">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="nav-indicator">
+                </div>
+                <ul class="menus">
+                    
+                     
+                        <li>
+                            <a class="wave " href="/">
+                                首页
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/archives">
+                                归档
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave " href="/about">
+                                关于
+                            </a>
+                        </li>
+                     
+                        <li>
+                            <a class="wave no-smoothstate" href="/atom.xml">
+                                订阅
+                            </a>
+                        </li>
+                     
+                    
+                   
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            <div class="container content">
+                <div class="scene_element scene_element--fadein">
+                    <div class="row">
+    <div class="main">
+        <article>
+          
+          <header class="post-header">
+          
+          </header>
+          <h1 class="post-title">es6</h1>
+
+          <section class="post-info">
+            <span class="post-date">2017/02/13</span>
+            
+            
+          </section>
+
+          <section class="post-content">
+            <h2 id="var-let-const"><a href="#var-let-const" class="headerlink" title="var let const"></a>var let const</h2><p>var 声明的变量，作用域在该语句所在的函数内，存在变量提升<br>let 声明的变量，作用域在该语句所在的代码块内，不存在变量提升<br>const 声明的是常量，在后面的代码中不可以再次赋值</p>
+<p>var 和 let 只是定义的域不同，而 const 和 let 定义域是相同的，而const 全称是Constant 常量，如果定义的是地址，可以修改 Object 里的内容，但不可以修改指向的地址</p>
+<h2 id="扩展运算符-…"><a href="#扩展运算符-…" class="headerlink" title="扩展运算符 …"></a>扩展运算符 …</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 解构赋值</span></span><br><span class="line"><span class="keyword">const</span> [a, ...b] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] <span class="comment">// 1, [2, 3]</span></span><br><span class="line"><span class="keyword">const</span> &#123;x, y, ...z&#125; = &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>, <span class="attr">a</span>: <span class="number">3</span>, <span class="attr">b</span>: <span class="number">4</span>&#125; <span class="comment">// 1, 2, &#123;a: 3, b: 4&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 复制 Object and Array</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;<span class="attr">a</span>: <span class="number">3</span>, <span class="attr">b</span>: <span class="number">4</span>&#125;</span><br><span class="line"><span class="keyword">const</span> obj2 = &#123;...obj&#125; <span class="comment">// 等同 Object.assign(&#123;&#125;, obj)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> arr2 = [...arr] <span class="comment">// 等同 arr.slice()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Math函数 任何函数参数上进行扩展</span></span><br><span class="line"><span class="keyword">const</span> num = [<span class="number">9</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">7</span>]</span><br><span class="line"><span class="built_in">Math</span>.min(...num)</span><br><span class="line"><span class="keyword">const</span> arg = <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// arguments and NodeList 转 Array</span></span><br><span class="line">[...document.querySelectorAll(<span class="string">'div'</span>)]</span><br><span class="line">[].slice.call(list)</span><br><span class="line"></span><br><span class="line"><span class="comment">// string to array</span></span><br><span class="line">[...<span class="string">'hello'</span>]</span><br></pre></td></tr></table></figure>
+<p>// <a href="https://github.com/creeperyang/blog/issues/21" target="_blank" rel="noopener">https://github.com/creeperyang/blog/issues/21</a></p>
+<h2 id="for-of"><a href="#for-of" class="headerlink" title="for of"></a>for of</h2><p>遍历数据结构（数组，对象）中的值，for…of会寻找内置或自定义@@iterator对象并调用它的next()方法来遍历数据值<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>] <span class="comment">// 数组有内置的 @@iterator</span></span><br><span class="line"><span class="keyword">var</span> it = a[<span class="built_in">Symbol</span>.iterator]()</span><br><span class="line">log(it.next()) <span class="comment">// &#123; value: 1, done: false &#125;</span></span><br><span class="line">log(it.next()) <span class="comment">// &#123; value: 2, done: false &#125;</span></span><br><span class="line">log(it.next()) <span class="comment">// &#123; value: undefined, done: true &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>自定义内置对象<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  b: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="built_in">Symbol</span>.iterator, &#123;</span><br><span class="line">  enumerable: <span class="literal">false</span>,</span><br><span class="line">  writable: <span class="literal">false</span>,</span><br><span class="line">  configurable: <span class="literal">true</span>,</span><br><span class="line">  value: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> o = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">var</span> idx = <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> ks = <span class="built_in">Object</span>.keys(o)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      next: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          value: o[ks[idx++]],</span><br><span class="line">          done: (idx &gt; ks.length)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> it = obj[<span class="built_in">Symbol</span>.iterator]()</span><br><span class="line"><span class="built_in">console</span>.log(it.next()) <span class="comment">// &#123; value: 1, done: false &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(it.next()) <span class="comment">// &#123; value: 2, done: false &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(it.next()) <span class="comment">// &#123; value: undefined, done: true &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (v <span class="keyword">of</span> obj) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="collections"><a href="#collections" class="headerlink" title="collections"></a>collections</h2><p>var arr = Array.from( arguments ) // 转数组</p>
+<p><a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx30c35f2a8096c476&amp;redirect_uri=http%3A%2F%2F192.168.92.248%3A5001&amp;scope=snsapi_userinfo&amp;state=ssaweqeqew#wechat_redirect" target="_blank" rel="noopener">https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx30c35f2a8096c476&amp;redirect_uri=http%3A%2F%2F192.168.92.248%3A5001&amp;scope=snsapi_userinfo&amp;state=ssaweqeqew#wechat_redirect</a></p>
+
+          </section>
+        </article>
+        
+
+       
+        <div class="pager">
+          
+            <a class="post-prev pager-item" href="/posts/4590b5e5/" >
+              <strong class="article-nav-caption">上一篇</strong>
+              <p class="post-nav-title">css3</p>
+            </a>
+          
+          
+            <a class="post-next pager-item" href="/posts/6096f3d5/">
+              <strong class="article-nav-caption">下一篇</strong>
+              <p class="post-nav-title">LeetCode</p>
+            </a>
+          
+        </div>
+        
+
+         <!-- comments -->
+        <div class="comment-section">
+  
+    
+
+
+  
+
+
+</div>
+
+    </div>
+    
+</div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+    <p>
+        &copy; 2020 wenhao blog
+    </p>
+</footer>
+<script src="/lib/jquery.js"></script>
+<script src="/lib/waves.js"></script>
+<script src="/lib/jquery-ui.js"></script>
+<script src="/lib/jquery.tocify.js"></script>
+<script src="/js/main.js"></script>
+
+    </body>
+</html>
